@@ -2,7 +2,11 @@ const spells = require('../spells.json');
 const randomId = require('random-id');
 
 exports.spells_list = function(req,res){
-    res.json(spells);
+    let result = spells;
+    if(typeof req.query.type !== 'undefined'){
+        result = spells.filter(spell=>spell.type ==req.query.type)
+    }
+    res.json(result);
 }
 
 exports.specific_spell = function(req,res){
@@ -13,6 +17,7 @@ exports.specific_spell = function(req,res){
     }
     res.send(result[0]);
 }
+
 
 exports.delete_spell = function(req,res){
     if(typeof req.header("Content-Type")!== 'undefined'){
