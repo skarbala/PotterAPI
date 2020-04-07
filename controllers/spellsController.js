@@ -4,8 +4,8 @@ const joi = require('joi');
 
 const schema = joi.object().keys({
     spell: joi.string().alphanum().min(3).max(30).required(),
-    type: joi.string(),
-    effect: joi.string(),
+    type: joi.string().valid('Charm', 'Enchantment', 'Curse'),
+    effect: joi.string().min(4),
     id: joi.any()
 
 });
@@ -49,18 +49,28 @@ exports.new_spell = function (req, res) {
         id: randomId(len, pattern)
     }
 
-    const validation = joi.validate(newSpell, schema);
-    console.log(validation)
-    let result = spells.find((spell) => spell.spell === newSpell.spell);
+    result = spells.find((spell) => spell.spell === newSpell.spell);
     if (typeof result !== 'undefined') {
         res.status(400).send({
-            message: newSpell.spell + ' already exists'
+            message: 'Spell ' + newSpell.spell + ' already exists'
+        })
+    }
+
+    let result = joi.validate(newSpell, schema);
+    const { value, error } = result;
+    const valid = error == null;
+    if (!valid) {
+        res.status(422).json({
+            message: 'Invalid request',
+            data: error
         })
     }
 
     spells.push(newSpell);
     return res.status(201).json({
-        spell: newSpell,
         message: "Spell created",
+        spell: {
+            id: newSpell.id
+        }
     });
 }
