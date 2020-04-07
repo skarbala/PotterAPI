@@ -10,12 +10,12 @@ exports.spells_list = function(req,res){
 }
 
 exports.specific_spell = function(req,res){
-    let result = spells.filter(spell => spell._id == req.params.spellId);
+    let result = spells.find(spell => spell._id == req.params.spellId);
     if (result.length == 0) {
         res.status(404)
         res.send({ message: "Spell not found" });
     }
-    res.send(result[0]);
+    res.send(result);
 }
 
 
