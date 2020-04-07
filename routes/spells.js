@@ -10,3 +10,6 @@ router.post('/', spellController.new_spell);
 
 router.get('/:spellId', spellController.specific_spell)
 
+router.delete('/:spellId', spellController.delete_spell)
+
+
