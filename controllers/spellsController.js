@@ -21,7 +21,7 @@ exports.specific_spell = function(req,res){
 
 exports.delete_spell = function(req,res){
     if(typeof req.header("Content-Type")!== 'undefined'){
-        res.status(400).send({message:"Sorry Nick you dont have header"});
+        res.status(400).send({message:"Sorry Nick you dont have HEADr"});
     }
     res.send(result[0]);
 }
@@ -31,7 +31,7 @@ exports.new_spell = function(req,res){
     var pattern = 'aA0'
     var id = randomId(len, pattern)
     if(typeof req.header("Content-Type")!== 'undefined'){
-        res.status(400).send({message:"Sorry Nick you dont have header"});
+        res.status(400).send({message:"Sorry Nick you dont have HEADer"});
     }
     var newSpell = {
         spell : req.body.spell,
