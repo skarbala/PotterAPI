@@ -1,4 +1,4 @@
-const spells = require('../spells.json');
+var spells = require('../spells.json');
 const randomId = require('random-id');
 
 exports.spells_list = function(req,res){
@@ -11,11 +11,10 @@ exports.spells_list = function(req,res){
 
 exports.specific_spell = function(req,res){
     let result = spells.find(spell => spell._id == req.params.spellId);
-    if (result.length == 0) {
-        res.status(404)
-        res.send({ message: "Spell not found" });
+    if (typeof result !== 'undefined') {
+        res.send(result);
     }
-    res.send(result);
+    res.status(404).send({ message: "Spell not found" });
 }
 
 
@@ -23,7 +22,14 @@ exports.delete_spell = function(req,res){
     if(typeof req.header("Content-Type")!== 'undefined'){
         res.status(400).send({message:"Sorry Nick you dont have HEADr"});
     }
-    res.send(result[0]);
+    let result = spells.find(spell => spell._id == req.params.spellId);
+    if (typeof result == 'undefined') {
+        res.status(404).send({ message: "Spell not found" });
+    }
+    spells = spells.filter(spell => spell._id != req.params.spellId);
+    res.send({
+        message:'spell deleted'
+    });
 }
 
 exports.new_spell = function(req,res){
@@ -43,7 +49,7 @@ exports.new_spell = function(req,res){
     let result = spells.find((spell) => spell.spell === newSpell.spell);
     if (typeof result !== 'undefined'){
         res.status(400)
-        res.send({
+        .send({
             message: newSpell.spell + ' already exists'
         })
     }
