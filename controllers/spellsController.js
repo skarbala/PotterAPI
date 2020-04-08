@@ -16,24 +16,24 @@ exports.spells_list = function (req, res) {
     if (typeof req.query.type !== 'undefined') {
         result = spells.filter(spell => spell.type == req.query.type)
     }
-    res.json(result);
+    return res.json(result);
 }
 
 exports.specific_spell = function (req, res) {
     let result = spells.find(spell => spell._id == req.params.spellId);
     if (typeof result !== 'undefined') {
-        res.send(result);
+        return res.send(result);
     }
-    res.status(404).send({ message: "Spell not found" });
+    return res.status(404).send({ message: "Spell not found" });
 }
 
 exports.delete_spell = function (req, res) {
     let result = spells.find(spell => spell._id == req.params.spellId);
     if (typeof result == 'undefined') {
-        res.status(404).send({ message: "Spell not found" });
+        return res.status(404).send({ message: "Spell not found" });
     }
     spells = spells.filter(spell => spell._id != req.params.spellId);
-    res.send({
+    return res.send({
         message: 'spell deleted'
     });
 }
@@ -49,18 +49,18 @@ exports.new_spell = function (req, res) {
         id: randomId(len, pattern)
     }
 
-    result = spells.find((spell) => spell.spell === newSpell.spell);
+    let result = spells.find((spell) => spell.spell === newSpell.spell);
     if (typeof result !== 'undefined') {
-        res.status(400).send({
+        return res.status(400).send({
             message: 'Spell ' + newSpell.spell + ' already exists'
         })
     }
 
-    let result = joi.validate(newSpell, schema);
+    result = joi.validate(newSpell, schema);
     const { value, error } = result;
     const valid = error == null;
     if (!valid) {
-        res.status(422).json({
+        return res.status(422).json({
             message: 'Invalid request',
             data: error
         })
