@@ -6,7 +6,7 @@ const schema = joi.object().keys({
     spell: joi.string().alphanum().min(3).max(30).required(),
     type: joi.string().valid('Charm', 'Enchantment', 'Curse'),
     effect: joi.string().min(4),
-    id: joi.any()
+    _id: joi.any()
 
 });
 const randomId = require('random-id');
@@ -38,6 +38,43 @@ exports.delete_spell = function (req, res) {
     });
 }
 
+exports.update_spell = function (req, res) {
+    let result = spells.find(spell => spell._id == req.params.spellId);
+    if (typeof result == 'undefined') {
+        return res.status(404).send({ message: "Spell not found" });
+    }
+
+    var newSpell = {
+        spell: req.body.spell,
+        type: req.body.type,
+        effect: req.body.effect,
+        _id: result._id
+    }
+
+    console.log(newSpell)
+
+    result = joi.validate(newSpell, schema);
+    const { value, error } = result;
+    const valid = error == null;
+
+    if (!valid) {
+        return res.status(422).json({
+            message: 'Invalid request',
+            data: error
+        })
+    }
+
+    spells = spells.filter(spell => spell._id != req.params.spellId);
+    spells.push(newSpell);
+    console.log(req.params.spellId)
+    return res.status(201).json({
+        message: "Spell updated",
+        spell: {
+            _id: newSpell._id
+        }
+    });
+}
+
 exports.new_spell = function (req, res) {
     var len = 30;
     var pattern = 'aA0'
@@ -46,7 +83,7 @@ exports.new_spell = function (req, res) {
         spell: req.body.spell,
         type: req.body.type,
         effect: req.body.effect,
-        id: randomId(len, pattern)
+        _id: randomId(len, pattern)
     }
 
     let result = spells.find((spell) => spell.spell === newSpell.spell);
@@ -70,7 +107,7 @@ exports.new_spell = function (req, res) {
     return res.status(201).json({
         message: "Spell created",
         spell: {
-            id: newSpell.id
+            _id: newSpell._id
         }
     });
 }
