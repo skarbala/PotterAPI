@@ -6,8 +6,8 @@ const schema = joi.object().keys({
     spell: joi.string().alphanum().min(3).max(30).required(),
     type: joi.string().valid('Charm', 'Enchantment', 'Curse'),
     effect: joi.string().min(4),
-    _id: joi.any()
-
+    isUnforgivable: joi.boolean().required(),
+    id: joi.any()
 });
 const randomId = require('random-id');
 
@@ -20,7 +20,7 @@ exports.spells_list = function (req, res) {
 }
 
 exports.specific_spell = function (req, res) {
-    let result = spells.find(spell => spell._id == req.params.spellId);
+    let result = spells.find(spell => spell.id == req.params.spellId);
     if (typeof result !== 'undefined') {
         return res.send(result);
     }
@@ -28,18 +28,18 @@ exports.specific_spell = function (req, res) {
 }
 
 exports.delete_spell = function (req, res) {
-    let result = spells.find(spell => spell._id == req.params.spellId);
+    let result = spells.find(spell => spell.id == req.params.spellId);
     if (typeof result == 'undefined') {
         return res.status(404).send({ message: "Spell not found" });
     }
-    spells = spells.filter(spell => spell._id != req.params.spellId);
+    spells = spells.filter(spell => spell.id != req.params.spellId);
     return res.send({
         message: 'spell deleted'
     });
 }
 
 exports.update_spell = function (req, res) {
-    let result = spells.find(spell => spell._id == req.params.spellId);
+    let result = spells.find(spell => spell.id == req.params.spellId);
     if (typeof result == 'undefined') {
         return res.status(404).send({ message: "Spell not found" });
     }
@@ -48,10 +48,10 @@ exports.update_spell = function (req, res) {
         spell: req.body.spell,
         type: req.body.type,
         effect: req.body.effect,
-        _id: result._id
-    }
+        isUnforgivable: req.body.isUnforgivable,
+        id: result.id
 
-    console.log(newSpell)
+    }
 
     result = joi.validate(newSpell, schema);
     const { value, error } = result;
@@ -59,18 +59,18 @@ exports.update_spell = function (req, res) {
 
     if (!valid) {
         return res.status(422).json({
-            message: 'Invalid request',
+            message: 'Wizard, I\'m sory but your request is invalid',
             data: error
         })
     }
 
-    spells = spells.filter(spell => spell._id != req.params.spellId);
+    spells = spells.filter(spell => spell.id != req.params.spellId);
     spells.push(newSpell);
     console.log(req.params.spellId)
     return res.status(201).json({
         message: "Spell updated",
         spell: {
-            _id: newSpell._id
+            id: newSpell.id
         }
     });
 }
@@ -83,7 +83,8 @@ exports.new_spell = function (req, res) {
         spell: req.body.spell,
         type: req.body.type,
         effect: req.body.effect,
-        _id: randomId(len, pattern)
+        isUnforgivable: req.body.isUnforgivable,
+        id: randomId(len, pattern)
     }
 
     let result = spells.find((spell) => spell.spell === newSpell.spell);
@@ -107,7 +108,7 @@ exports.new_spell = function (req, res) {
     return res.status(201).json({
         message: "Spell created",
         spell: {
-            _id: newSpell._id
+            id: newSpell.id
         }
     });
 }
