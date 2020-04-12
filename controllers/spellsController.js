@@ -1,7 +1,6 @@
 var spells = require('../spells.json');
 const joi = require('joi');
 
-
 const schema = joi.object().keys({
     spell: joi.string().alphanum().min(3).max(30).required(),
     type: joi.string().valid('Charm', 'Enchantment', 'Curse'),
@@ -9,12 +8,17 @@ const schema = joi.object().keys({
     isUnforgivable: joi.boolean().required(),
     id: joi.any()
 });
+
 const randomId = require('random-id');
 
 exports.spells_list = function (req, res) {
     let result = spells;
+    console.log(req.query);
     if (typeof req.query.type !== 'undefined') {
         result = spells.filter(spell => spell.type == req.query.type)
+    }
+    if (typeof req.query.isUnforgivable !== 'undefined') {
+        result = result.filter(spell => spell.isUnforgivable == req.query.isUnforgivable)
     }
     return res.json(result);
 }
@@ -50,7 +54,6 @@ exports.update_spell = function (req, res) {
         effect: req.body.effect,
         isUnforgivable: req.body.isUnforgivable,
         id: result.id
-
     }
 
     result = joi.validate(newSpell, schema);

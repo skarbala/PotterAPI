@@ -1,14 +1,15 @@
 var express = require('express');
 var basicAuth = require('express-basic-auth');
 let jwt = require('jsonwebtoken');
-const bodyParser = require('body-parser');
+var boolParser = require('express-query-boolean');
 
-module.exports =verifyToken;
+
+module.exports = verifyToken;
 var app = express();
 const port = 3000
 
 app.use(express.json())
-app.use(bodyParser.json());
+app.use(boolParser());
 
 
 const spellRoute = require('./routes/spells.js');
@@ -30,7 +31,7 @@ app.get('/login', basicAuth({
     generateToken(user, res);
 });
 
-generateToken = function(user, res) {
+generateToken = function (user, res) {
     jwt.sign({ user: user }, 'secretkey', (err, token) => {
         res.json({
             token: token
