@@ -21,6 +21,9 @@ app.use('/houses', houseRoute);
 const characterRoute = require('./routes/characters.js');
 app.use('/characters', characterRoute)
 
+const sortingHatRoute = require('./routes/sortinghat.js');
+app.use('/sortingHat', sortingHatRoute);
+
 app.get('/login', basicAuth({
     users: { 'admin': 'supersecret' },
 }), (req, res) => {
