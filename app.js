@@ -24,6 +24,9 @@ app.use('/characters', characterRoute)
 const sortingHatRoute = require('./routes/sortinghat.js');
 app.use('/sortingHat', sortingHatRoute);
 
+const quote = require('./routes/quote.js');
+app.use('/quote', quote);
+
 app.get('/login', basicAuth({
     users: { 'admin': 'supersecret' },
 }), (req, res) => {
