@@ -1,0 +1,28 @@
+ul.spells {
+    list-style: none;
+  }
+  ul.spells li {
+    padding: 10px;
+    color: #dca39e;
+    font-family: "Lora", serif;
+    vertical-align: middle;
+    font-size: 2em;
+    transition: all 200ms ease-in-out;
+  }
+  ul.spells li div.inner {
+    padding: 10px;
+    cursor: pointer;
+  }
+  ul.spells li:nth-child(1n+2) {
+    font-size: 1.3em;
+  }
+  ul.spells li:nth-child(2n+3) {
+    font-size: 1.7em;
+  }
+  ul.spells li:nth-child(3n) {
+    font-size: 2.2em;
+  }
+  ul.spells li:hover {
+    color: #fffcf9;
+  }
+  
