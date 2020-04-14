@@ -2,7 +2,7 @@
 <template>
   <div>
     <ul class="spells row text-center">
-      <li v-bind:key="spell.id" v-for="spell in spells">
+      <li v-bind:key="spell.id" v-for="spell in spells" v-on:click="$emit('clickOnspell', spell)">
         <div>{{spell.effect}}</div>
       </li>
     </ul>
@@ -12,7 +12,12 @@
 <script>
 export default {
   name: "SpellList",
-  props: ["spells"]
+  props: ["spells"],
+  methods: {
+    clickOnspell: function() {
+      this.$emit("selectSpell");
+    }
+  }
 };
 </script>
 

@@ -2,13 +2,23 @@
 <template>
   <div id="app">
     <h1 class="text-center title">Spelleology</h1>
-    <SpellList :spells="spells" />
+    <div>
+      <button v-on:click="clearAll">Clear</button>
+      <button v-on:click="reset">Reset</button>
+    </div>
+    <modal v-if="showModal" @close="showModal = false">
+      <h2 slot="header">{{selectedSpell.spell}}</h2>
+      <h3
+        slot="body"
+      >{{selectedSpell.effect.charAt(0).toUpperCase() + selectedSpell.effect.slice(1)}}</h3>
+      <h4 slot="body">{{selectedSpell.type}}</h4>
+    </modal>
+    <SpellList :spells="spells" v-on:clickOnspell="selectSpell" />
   </div>
 </template>
 
 <script>
 import SpellList from "./components/SpellList.vue";
-import axios from "axios";
 
 export default {
   name: "App",
@@ -16,13 +26,29 @@ export default {
     SpellList
   },
   data: function() {
-    return { spells: [] };
+    return { spells: [], selectedSpell: "", showModal: false };
   },
 
   created: function() {
-    axios
-      .get("http://localhost:3000/spells")
-      .then(response => (this.spells = response.data));
+    this.$http.get("/spells").then(response => (this.spells = response.data));
+  },
+  methods: {
+    selectSpell: function(spell) {
+      this.selectedSpell = spell;
+      this.showModal = true;
+    },
+    clearAll: function() {
+      this.$http
+        .get("spells/actions/deleteAll")
+        .then(response => console.log(response.data.message));
+      this.spells = [];
+    },
+    reset: function() {
+      this.$http
+        .get("spells/actions/reset")
+        .then(response => (this.spells = response.data.spells));
+      this.spells = [];
+    }
   }
 };
 </script>
