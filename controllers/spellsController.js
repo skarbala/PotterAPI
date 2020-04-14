@@ -22,7 +22,15 @@ exports.spells_list = function (req, res) {
     }
     return res.json(result);
 }
+exports.delete_all = function (req, res) {
+    spells = [];
+    res.send({ message: 'Mischief managed' })
+}
 
+exports.reset = function (req, res) {
+    spells = require('../spells.json');
+    res.send({ message: 'Aparecium' })
+}
 exports.specific_spell = function (req, res) {
     let result = spells.find(spell => spell.id == req.params.spellId);
     if (typeof result !== 'undefined') {
