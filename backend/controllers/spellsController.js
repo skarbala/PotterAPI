@@ -29,7 +29,7 @@ exports.delete_all = function (req, res) {
 
 exports.reset = function (req, res) {
     spells = require('../spells.json');
-    res.send({ message: 'Aparecium' })
+    res.send({ message: 'Aparecium', spells: spells })
 }
 exports.specific_spell = function (req, res) {
     let result = spells.find(spell => spell.id == req.params.spellId);
