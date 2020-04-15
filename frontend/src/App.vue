@@ -4,32 +4,36 @@
     <div class="container-fluid">
       <h1 class="text-center title">Spelleology</h1>
       <div class="col-md-6 mx-auto">
-        <input type="text" placeholder="search for spell effect" v-model="search" class="search" />
+        <search-component v-model="search" />
         <button v-on:click="clearAll" class="custom-underline fancy-button">Delete all</button>
         <button v-on:click="reset" class="custom-underline">Reset</button>
       </div>
       <div class="row">
         <div class="col col-md-12 mx-auto">
-          <SpellList
+          <spell-list
             v-if="spells.length >=1"
             :spells="filteredList"
             v-on:clickOnspell="selectSpell"
           />
           <h1 class="subtitle" v-else>Mischief managed</h1>
         </div>
-        <div class="col col-md-3 sticky-top"></div>
       </div>
     </div>
+    <modal :spell="selectedSpell" v-show="showModal" @close="closeModal" />
   </div>
 </template>
 
 <script>
 import SpellList from "./components/SpellList.vue";
+import SearchComponent from "./components/SearchComponent.vue";
+import Modal from "./components/Modal.vue";
 
 export default {
   name: "App",
   components: {
-    SpellList
+    SpellList,
+    SearchComponent,
+    Modal
   },
   data: function() {
     return { spells: [], selectedSpell: "", showModal: false, search: "" };
@@ -49,6 +53,9 @@ export default {
     selectSpell: function(spell) {
       this.selectedSpell = spell;
       this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
     },
     clearAll: function() {
       this.$http.get("spells/actions/deleteAll").then(() => (this.spells = []));
@@ -100,6 +107,10 @@ button {
   border-bottom: 2px solid #dca39e;
   margin: 0 20px;
 }
+button.custom-underline:hover {
+  border-bottom: 2px solid white;
+  color: white;
+}
 button:focus {
   outline: none;
 }
@@ -109,42 +120,5 @@ div.controller {
 @font-face {
   font-family: "Harry";
   src: url("./assets/HARRYP.TTF");
-}
-input.search {
-  outline: none;
-  border: none;
-  color: white;
-  font-family: "Lora", serif;
-  border-bottom: 2px solid #dca39e;
-  background-color: #822724;
-  border-radius: 0;
-  font-size: 2em;
-  margin-bottom: 50px;
-  transition: all 200ms ease;
-}
-input.search:focus,
-input.search:active {
-  outline: none;
-  border: none;
-  box-shadow: none;
-  background-color: #822724;
-  border-radius: 0;
-  border-bottom: 1px solid white;
-  color: white;
-}
-
-button:hover {
-  border-bottom: 2px solid white;
-  color: white;
-}
-input.search::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #dca39e;
-  font-family: "Kanit", serif;
-}
-input.search:focus::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  font-family: "Kanit", serif;
 }
 </style>
