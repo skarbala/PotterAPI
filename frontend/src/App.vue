@@ -1,19 +1,30 @@
 
 <template>
   <div id="app">
-    <h1 class="text-center title">Spelleology</h1>
-    <div>
-      <button v-on:click="clearAll">Clear</button>
-      <button v-on:click="reset">Reset</button>
+    <div class="container-fluid">
+      <h1 class="text-center title">Spelleology</h1>
+      <div class="row">
+        <div class="col col-md-8 offset-md-1">
+          <SpellList
+            v-if="spells.length >=1"
+            :spells="filteredList"
+            v-on:clickOnspell="selectSpell"
+          />
+          <h1 class="subtitle" v-else>Mischief managed</h1>
+        </div>
+        <div class="col col-md-3 sticky-top">
+          <button v-on:click="clearAll">Clear</button>
+          <button v-on:click="reset">Reset</button>
+
+          <input
+            type="text"
+            placeholder="search for spell effect"
+            v-model="search"
+            class="form-control search"
+          />
+        </div>
+      </div>
     </div>
-    <modal v-if="showModal" @close="showModal = false">
-      <h2 slot="header">{{selectedSpell.spell}}</h2>
-      <h3
-        slot="body"
-      >{{selectedSpell.effect.charAt(0).toUpperCase() + selectedSpell.effect.slice(1)}}</h3>
-      <h4 slot="body">{{selectedSpell.type}}</h4>
-    </modal>
-    <SpellList :spells="spells" v-on:clickOnspell="selectSpell" />
   </div>
 </template>
 
@@ -26,7 +37,14 @@ export default {
     SpellList
   },
   data: function() {
-    return { spells: [], selectedSpell: "", showModal: false };
+    return { spells: [], selectedSpell: "", showModal: false, search: "" };
+  },
+  computed: {
+    filteredList: function() {
+      return this.spells.filter(spell => {
+        return spell.effect.toLowerCase().includes(this.search.toLowerCase());
+      });
+    }
   },
 
   created: function() {
@@ -38,16 +56,12 @@ export default {
       this.showModal = true;
     },
     clearAll: function() {
-      this.$http
-        .get("spells/actions/deleteAll")
-        .then(response => console.log(response.data.message));
-      this.spells = [];
+      this.$http.get("spells/actions/deleteAll").then(() => (this.spells = []));
     },
     reset: function() {
-      this.$http
-        .get("spells/actions/reset")
-        .then(response => (this.spells = response.data.spells));
-      this.spells = [];
+      this.$http.get("spells/actions/reset").then(response => {
+        this.spells = response.data.spells;
+      });
     }
   }
 };
@@ -71,6 +85,35 @@ h1.title {
   color: white;
   margin-top: 20px;
   text-shadow: 7px 7px 2px #671e1c;
+}
+
+h1.subtitle {
+  font-family: "Harry", serif;
+  margin: 100px;
+  font-size: 6em;
+  color: white;
+  text-shadow: 7px 7px 2px #671e1c;
+}
+
+button {
+  background-color: #822724;
+  border: none;
+  font-family: "Lora", serif;
+  color: #fffcf9;
+  font-size: 1.5em;
+  margin: 30px;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 17px -4px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 17px -4px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 17px -4px rgba(0, 0, 0, 1);
+}
+button:focus {
+  outline: none;
+}
+div.controller {
+  position: fixed;
 }
 @font-face {
   font-family: "Harry";
