@@ -2,7 +2,7 @@ var express = require('express');
 var basicAuth = require('express-basic-auth');
 let jwt = require('jsonwebtoken');
 var boolParser = require('express-query-boolean');
-
+var cors = require('cors');
 
 module.exports = verifyToken;
 var app = express();
@@ -10,6 +10,7 @@ const port = 3000
 
 app.use(express.json())
 app.use(boolParser());
+app.use(cors());
 
 
 const spellRoute = require('./routes/spells.js');
