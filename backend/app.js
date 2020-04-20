@@ -57,7 +57,7 @@ function verifyToken(req, res, next) {
     else {
         res.status(403)
         res.json({
-            message: "vajcia"
+            message: "Sorry Wizard you dont have TOKEN"
         });
     }
 }

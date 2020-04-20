@@ -13,7 +13,6 @@ const randomId = require('random-id');
 
 exports.spells_list = function (req, res) {
     let result = spells;
-    console.log(req.query);
     if (typeof req.query.type !== 'undefined') {
         result = spells.filter(spell => spell.type == req.query.type)
     }
@@ -77,7 +76,6 @@ exports.update_spell = function (req, res) {
 
     spells = spells.filter(spell => spell.id != req.params.spellId);
     spells.push(newSpell);
-    console.log(req.params.spellId)
     return res.status(201).json({
         message: "Spell updated",
         spell: {
