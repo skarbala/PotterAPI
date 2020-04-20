@@ -3,7 +3,8 @@
         "id": "5b74ebd5fb6fc0739646754c",
         "spell": "Aberto",
         "type": "Charm",
-        "effect": "opens objects"
+        "effect": "opens objects",
+        "isUnforgivable": false
     },
     {
         "id": "5b74ecfa3228320021ab622b",
