@@ -16,7 +16,7 @@ function getRandomQuote() {
 router.get('/', function (req, res) {
     let house = getRandomHouseName();
     res.json({
-        magicWandSays: getRandomQuote() + ' ' + house,
+        sortingHatSays: getRandomQuote() + ' ' + house,
         house: house
     })
 });
