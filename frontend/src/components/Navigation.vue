@@ -1,0 +1,26 @@
+<template>
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <router-link class="nav-link" to="/">Welcome</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/spelleology">Spelleology</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/sortingHat">Sorting Hat</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/quotes">Quote Generator</router-link>
+      </li>
+    </ul>
+  </nav>
+</template>  
+
+<script>
+export default {
+  name: "Navigation"
+};
+</script>
+<style>
+</style>
