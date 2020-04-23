@@ -4,8 +4,10 @@
       <h1>Potter Quotes</h1>
       <button v-on:click="getQuote">Get Quote</button>
 
-      <h1>"{{quote.quote}}"</h1>
-      <h2>{{quote.author}}</h2>
+      <div v-if="quote" class="quote">
+        <p>"{{quote.quote}}"</p>
+        <h2>{{quote.author}}</h2>
+      </div>
     </div>
   </div>
 </template>  
@@ -28,10 +30,10 @@ export default {
 };
 </script>
 <style>
-h1 {
-  font-family: "Allura", cursive;
+div.quote p {
+  text-align: left;
 }
-h2 {
+div.quote h2 {
   text-align: right;
 }
 </style>

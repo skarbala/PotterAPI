@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mx-auto">
       <li class="nav-item">
         <router-link class="nav-link" to="/">Welcome</router-link>
       </li>

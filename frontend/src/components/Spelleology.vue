@@ -5,8 +5,8 @@
       <h1 class="text-center title">Spelleology</h1>
       <div class="col-md-6 mx-auto">
         <search-component v-model="search" />
-        <button v-on:click="clearAll" class="custom-underline fancy-button">Delete all</button>
-        <button v-on:click="reset" class="custom-underline">Reset</button>
+        <button v-on:click="clearAll" class="custom-underline spell-button">Delete all</button>
+        <button v-on:click="reset" class="custom-underline spell-button">Reset</button>
       </div>
       <div class="row">
         <div class="col col-md-12 mx-auto">
@@ -89,7 +89,7 @@ h1.subtitle {
   color: #dca39e;
 }
 
-button {
+button.spell-button {
   padding: 1px 20px;
   background-color: #822724;
   border: none;
