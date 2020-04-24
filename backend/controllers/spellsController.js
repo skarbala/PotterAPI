@@ -3,7 +3,7 @@ const joi = require('joi');
 
 const schema = joi.object().keys({
     spell: joi.string().alphanum().min(3).max(30).required(),
-    type: joi.string().valid('Charm', 'Enchantment', 'Curse'),
+    type: joi.string().valid('Charm', 'Enchantment', 'Curse', 'Spell', 'Hex'),
     effect: joi.string().min(4),
     isUnforgivable: joi.boolean().required(),
     id: joi.any()
