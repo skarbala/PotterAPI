@@ -23,4 +23,13 @@ export default {
 };
 </script>
 <style>
+a {
+  color: #212529;
+}
+a:hover {
+  color: black;
+}
+a.router-link-exact-active {
+  border-bottom: 1px solid #212529;
+}
 </style>

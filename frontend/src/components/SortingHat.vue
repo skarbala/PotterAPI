@@ -1,8 +1,16 @@
 <template>
-  <div>
-    <h1>Sorting Hat</h1>
-    <button v-on:click="getQuote">Sort me</button>
-    <h1>{{quote.sortingHatSays}}</h1>
+  <div class="main">
+    <h1 class="heading">Sorting Hat</h1>
+    <button class="main sort" v-on:click="getQuote">Sort me</button>
+    <div class="row">
+      <div class="col-md-6">
+        <img class="hat" src="../assets/sortinghat.jpg" alt />
+      </div>
+      <div class="col-md-4 my-auto message">
+        <h1 class="message" v-if="quote">{{quote.sortingHatSays}}</h1>
+        <h2 v-else>Click sort me and get yourself a house</h2>
+      </div>
+    </div>
   </div>
 </template>  
 
@@ -17,7 +25,6 @@ export default {
   methods: {
     getQuote: function() {
       this.quote = "";
-      console.log("yay clicked");
       this.$http
         .get("/sortingHat")
         .then(response => (this.quote = response.data));
@@ -26,4 +33,25 @@ export default {
 };
 </script>
 <style>
+div.message h1 {
+  text-align: left;
+  color: rgb(45, 41, 32);
+}
+
+div.message h2 {
+  text-align: center;
+  color: rgb(154, 154, 154);
+}
+
+img.hat {
+  width: 60%;
+}
+
+button.sort {
+  background-color: #3f3f8c;
+}
+
+button.sort:hover {
+  background-color: #333373;
+}
 </style>

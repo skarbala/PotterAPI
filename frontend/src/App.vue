@@ -24,4 +24,16 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+button.main {
+  padding: 10px 40px;
+  background-color: #822724;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+button.main:hover {
+  background-color: #72221f;
+}
 </style>

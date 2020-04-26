@@ -1,24 +1,17 @@
 
 <template>
-  <div class="main">
-    <div class="container-fluid">
-      <h1 class="text-center title">Spelleology</h1>
-      <div class="col-md-6 mx-auto">
-        <search-component v-model="search" />
-        <button v-on:click="clearAll" class="custom-underline spell-button">Delete all</button>
-        <button v-on:click="reset" class="custom-underline spell-button">Reset</button>
-      </div>
-      <div class="row">
-        <div class="col col-md-12 mx-auto">
-          <spell-list
-            v-if="spells.length >=1"
-            :spells="filteredList"
-            v-on:clickOnspell="selectSpell"
-          />
-          <h1 class="subtitle" v-else>Mischief managed</h1>
-        </div>
-      </div>
+  <div class="main spells-main">
+    <h1 class="text-center title">Spelleology</h1>
+    <div class="col-md-6 mx-auto">
+      <search-component v-model="search" />
+      <button v-on:click="clearAll" class="custom-underline spell-button">Delete all</button>
+      <button v-on:click="reset" class="custom-underline spell-button">Reset</button>
     </div>
+    <div class="row col-md-12 mx-auto">
+      <spell-list v-if="spells.length >=1" :spells="filteredList" v-on:clickOnspell="selectSpell" />
+    </div>
+    <h1 class="subtitle text-center" v-if="spells.length ==0">Mischief managed</h1>
+
     <modal :spell="selectedSpell" v-show="showModal" @close="closeModal" />
   </div>
 </template>
@@ -70,15 +63,17 @@ export default {
 </script>
 <style>
 div.main {
-  background-color: #822724;
   padding-top: 50px;
+  min-height: 1000px;
+}
+div.spells-main {
+  background-color: #822724;
 }
 
 h1.title {
   font-family: "Harry", serif;
-  font-size: 12em;
+  font-size: 8em;
   color: white;
-  margin-top: 20px;
   text-shadow: 7px 7px 2px #671e1c;
 }
 

@@ -3,7 +3,7 @@
   <div>
     <ul class="spells row text-center">
       <li v-bind:key="spell.id" v-for="spell in spells" v-on:click="$emit('clickOnspell', spell)">
-        <div>{{spell.effect}}</div>
+        <p class="inner">{{spell.effect}}</p>
       </li>
     </ul>
   </div>
