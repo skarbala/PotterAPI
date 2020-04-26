@@ -26,7 +26,6 @@ npm start
 
 . Open terminal and run following commands
 ```
-git clone https://github.com/skarbala/PotterAPI.git
 cd PotterAPI/frontend
 npm install
 ```
