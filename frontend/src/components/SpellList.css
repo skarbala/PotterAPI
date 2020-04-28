@@ -1,5 +1,6 @@
 ul.spells {
     list-style: none;
+    padding:20px;
   }
   ul.spells li {
     padding: 10px;
@@ -9,8 +10,7 @@ ul.spells {
     font-size: 2em;
     transition: all 200ms ease-in-out;
   }
-  ul.spells li div.inner {
-    padding: 10px;
+  ul.spells li p.inner {
     cursor: pointer;
   }
   ul.spells li:nth-child(1n+2) {
