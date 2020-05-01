@@ -27,7 +27,7 @@ exports.delete_all = function (req, res) {
 }
 
 exports.reset = function (req, res) {
-    spells = require('../spells.json');
+    spells = require('../spells.json').slice(0);
     res.send({ message: 'Aparecium', spells: spells })
 }
 exports.specific_spell = function (req, res) {
