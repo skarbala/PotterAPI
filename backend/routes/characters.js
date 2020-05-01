@@ -17,7 +17,7 @@ router.get('/',
     });
 
 router.get('/:characterId', function (req, res) {
-    let result = characters.find(character => character._id == req.params.characterId);
+    let result = characters.find(character => character.id == req.params.characterId);
     res.send(result);
 });
 

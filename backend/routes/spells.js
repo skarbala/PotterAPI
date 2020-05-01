@@ -17,7 +17,7 @@ router.get('/actions/deleteAll', spellController.delete_all)
 
 router.get('/actions/reset', spellController.reset)
 
-router.put('/:spellId', spellController.update_spell)
+router.put('/:spellId', authChecker.checkHeader, spellController.update_spell)
 
 
 
