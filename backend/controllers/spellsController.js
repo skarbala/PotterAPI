@@ -2,7 +2,7 @@ var spells = require('../spells.json');
 const joi = require('joi');
 
 const schema = joi.object().keys({
-    spell: joi.string().alphanum().min(3).max(30).required(),
+    spell: joi.string().min(3).max(30).required().regex(/^\w+(?:\s+\w+)*$/),
     type: joi.string().valid('Charm', 'Enchantment', 'Curse', 'Spell', 'Hex', 'Jinx'),
     effect: joi.string().min(4),
     isUnforgivable: joi.boolean().required(),
