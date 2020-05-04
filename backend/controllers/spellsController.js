@@ -1,6 +1,6 @@
 var spells = require('../spells.json');
 const joi = require('joi');
-
+const initialSpells = require('../spells.json');
 const schema = joi.object().keys({
     spell: joi.string().min(3).max(30).required().regex(/^\w+(?:\s+\w+)*$/),
     type: joi.string().valid('Charm', 'Enchantment', 'Curse', 'Spell', 'Hex', 'Jinx'),
@@ -27,7 +27,7 @@ exports.delete_all = function (req, res) {
 }
 
 exports.reset = function (req, res) {
-    spells = require('../spells.json').slice(0);
+    spells = initialSpells.slice(0);
     res.send({ message: 'Aparecium', spells: spells })
 }
 exports.specific_spell = function (req, res) {
