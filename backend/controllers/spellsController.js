@@ -19,6 +19,9 @@ exports.spells_list = function (req, res) {
     if (typeof req.query.isUnforgivable !== 'undefined') {
         result = result.filter(spell => spell.isUnforgivable == req.query.isUnforgivable)
     }
+    if (typeof req.query.limit !== 'undefined') {
+        result = result.slice(0, req.query.limit);
+    }
     return res.json(result);
 }
 exports.delete_all = function (req, res) {
