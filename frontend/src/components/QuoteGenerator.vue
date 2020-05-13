@@ -1,9 +1,26 @@
 <template>
   <div class="main">
-    <h1>Potter Quotes</h1>
+    <h1 class="title">Potter Quotes</h1>
     <div class="quote-controls">
       <button v-on:click="getQuote" class="main">Get Quote</button>
-      <p>Wisdom +{{this.quoteList.length}} points</p>
+      <div class="wisdom-level">
+        <div class="row">
+          <div class="col">
+            <p>
+              <span>wisdom points</span>
+              +{{this.quoteList.length}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              <span>current level</span>
+              {{wizardLevel}}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-6 mx-auto">
@@ -12,7 +29,7 @@
           <h1>"{{quote.quote}}"</h1>
           <h2>{{quote.author}}</h2>
         </div>
-        <div v-else>Click button to get first knowledge</div>
+        <div v-else>Click button to get some wisdom</div>
       </div>
 
       <transition-group name="fade" tag="ul" class="recent-quotes">
@@ -33,7 +50,8 @@ export default {
   data: function() {
     return {
       quote: "",
-      quoteList: []
+      quoteList: [],
+      qouteCounter: ""
     };
   },
   methods: {
@@ -45,13 +63,50 @@ export default {
         this.qouteCounter++;
       });
     }
+  },
+  computed: {
+    wizardLevel: function() {
+      let level = "";
+      if (this.qouteCounter <= 5) {
+        level = "NOOB";
+      }
+      if (this.qouteCounter > 5) {
+        level = "ROOKIE wand polisher";
+      }
+      if (this.qouteCounter > 10) {
+        level = "Experienced broom SUMMONER";
+      }
+      if (this.qouteCounter > 15) {
+        level = "NIGHTMARE Alchemist";
+      }
+      if (this.qouteCounter > 20) {
+        level = "Spell OVERLORD";
+      }
+      if (this.qouteCounter > 25) {
+        level = "Death potion EVANGELIST";
+      }
+      if (this.qouteCounter > 30) {
+        level = "Dementor the HAPPINESS SPECIALIST";
+      }
+      if (this.qouteCounter > 35) {
+        level = "Part-Time DEATHEATER";
+      }
+      if (this.qouteCounter > 40) {
+        level = "First Impression SPOILER";
+      }
+      if (this.qouteCounter > 45) {
+        level = "Azcaban INFLUENCER";
+      }
+      return level;
+    }
   }
 };
 </script>
-<style >
-div.quote {
-  margin-top: 50px;
+<style scoped>
+h1.title {
+  font-family: "Roboto Slab", serif;
 }
+
 div.quote-container {
   min-height: 200px;
   margin-bottom: 50px;
@@ -70,6 +125,7 @@ button {
   cursor: pointer;
   padding: 10px 30px;
   margin-top: 50px;
+  background-color: #822724;
 }
 
 ul.recent-quotes {
@@ -92,10 +148,10 @@ ul.recent-quotes div {
 }
 div.quote-controls p {
   display: inline-block;
-  margin: 50px;
   color: #822724;
   font-weight: 700;
   font-size: 1.5em;
+  text-align: justify;
 }
 div.quote-controls button:active {
   transform: scale(1.1);
@@ -103,5 +159,12 @@ div.quote-controls button:active {
 
 div.quote-controls button {
   transition: all 200ms ease-in;
+}
+div.wisdom-level p span {
+  color: rgb(189, 189, 189);
+  font-weight: 300;
+}
+div.wisdom-level {
+  margin-top: 20px;
 }
 </style>

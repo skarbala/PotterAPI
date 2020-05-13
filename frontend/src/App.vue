@@ -32,8 +32,17 @@ button.main {
   font-size: 1.2em;
   cursor: pointer;
 }
-
+button {
+  border: none;
+}
+button:focus {
+  outline: none;
+}
 button.main:hover {
   background-color: #72221f;
+}
+div.main {
+  padding-top: 50px;
+  min-height: 1000px;
 }
 </style>

@@ -61,11 +61,7 @@ export default {
   }
 };
 </script>
-<style>
-div.main {
-  padding-top: 50px;
-  min-height: 1000px;
-}
+<style scoped>
 div.spells-main {
   background-color: #822724;
 }
@@ -87,7 +83,6 @@ h1.subtitle {
 button.spell-button {
   padding: 1px 20px;
   background-color: #822724;
-  border: none;
   font-family: "Kanit", serif;
   color: #fffcf9;
   font-size: 2em;
@@ -99,10 +94,6 @@ button.spell-button {
 button.custom-underline:hover {
   border-bottom: 2px solid white;
   color: white;
-}
-
-button:focus {
-  outline: none;
 }
 
 div.controller {
