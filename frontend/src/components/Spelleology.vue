@@ -4,14 +4,13 @@
     <h1 class="text-center title">Spelleology</h1>
     <div class="col-md-6 mx-auto">
       <search-component v-model="search" />
-      <button v-on:click="clearAll" class="custom-underline spell-button">Delete all</button>
-      <button v-on:click="reset" class="custom-underline spell-button">Reset</button>
+      <button v-on:click="clearAll" class="spell-button">Delete all</button>
+      <button v-on:click="reset" class="spell-button">Reset</button>
     </div>
     <div class="row col-md-12 mx-auto">
       <spell-list v-if="spells.length >=1" :spells="filteredList" v-on:clickOnspell="selectSpell" />
     </div>
     <h1 class="subtitle text-center" v-if="spells.length ==0">Mischief managed</h1>
-
     <modal :spell="selectedSpell" v-show="showModal" @close="closeModal" />
   </div>
 </template>
@@ -63,26 +62,26 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 div.spells-main {
   background-color: #822724;
 }
 
-h1.title {
+h1 {
   font-family: "Harry", serif;
-  font-size: 8em;
-  color: white;
-  text-shadow: 7px 7px 2px #671e1c;
+  &.title {
+    color: white;
+    font-size: 8em;
+    text-shadow: 7px 7px 2px #671e1c;
+  }
+  &.subtitle {
+    margin: 100px;
+    font-size: 6em;
+    color: #dca39e;
+  }
 }
 
-h1.subtitle {
-  font-family: "Harry", serif;
-  margin: 100px;
-  font-size: 6em;
-  color: #dca39e;
-}
-
-button.spell-button {
+.spell-button {
   padding: 1px 20px;
   background-color: #822724;
   font-family: "Kanit", serif;
@@ -91,15 +90,10 @@ button.spell-button {
   cursor: pointer;
   border-bottom: 2px solid #dca39e;
   margin: 0 20px;
-}
-
-button.custom-underline:hover {
-  border-bottom: 2px solid white;
-  color: white;
-}
-
-div.controller {
-  position: fixed;
+  &:hover {
+    border-bottom: 2px solid white;
+    color: white;
+  }
 }
 
 @font-face {

@@ -32,26 +32,25 @@ export default {
   }
 };
 </script>
-<style>
-div.message h1 {
-  text-align: left;
-  color: rgb(45, 41, 32);
-}
-
-div.message h2 {
-  text-align: center;
-  color: rgb(154, 154, 154);
-}
-
-img.hat {
-  width: 60%;
+<style lang="scss">
+div.message {
+  h1 {
+    text-align: left;
+    color: rgb(45, 41, 32);
+  }
+  h2 {
+    text-align: center;
+    color: rgb(154, 154, 154);
+  }
+  img.hat {
+    width: 60%;
+  }
 }
 
 button.sort {
   background-color: #3f3f8c;
-}
-
-button.sort:hover {
-  background-color: #333373;
+  &:hover {
+    background-color: #333373;
+  }
 }
 </style>

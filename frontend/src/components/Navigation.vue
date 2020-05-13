@@ -22,14 +22,14 @@ export default {
   name: "Navigation"
 };
 </script>
-<style>
+<style lang="scss">
 a {
   color: #212529;
-}
-a:hover {
-  color: black;
-}
-a.router-link-exact-active {
-  border-bottom: 1px solid #212529;
+  &:hover {
+    color: black;
+  }
+  &.router-link-exact-active {
+    border-bottom: 1px solid #212529;
+  }
 }
 </style>

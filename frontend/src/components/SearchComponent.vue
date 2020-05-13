@@ -38,11 +38,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
-<style scoped>
+<style lang="scss" scoped>
 input.search {
   outline: none;
   border: none;
-  color: white;
+  color: #fff;
   font-family: "Lora", serif;
   border-bottom: 2px solid #dca39e;
   background-color: #822724;
@@ -50,27 +50,22 @@ input.search {
   font-size: 2em;
   margin-bottom: 50px;
   transition: all 200ms ease;
-}
-
-input.search:focus,
-input.search:active {
-  outline: none;
-  border: none;
-  box-shadow: none;
-  background-color: #822724;
-  border-radius: 0;
-  border-bottom: 1px solid white;
-  color: white;
-}
-
-input.search::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #dca39e;
-  font-family: "Kanit", serif;
-}
-input.search:focus::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  font-family: "Kanit", serif;
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: none;
+    background-color: #822724;
+    border-radius: 0;
+    border-bottom: 2px solid #fff;
+    color: white;
+  }
+  &::placeholder {
+    color: #dca39e;
+    font-family: "Kanit", serif;
+  }
+  &:focus::placeholder {
+    color: #fff;
+    font-family: "Kanit", serif;
+  }
 }
 </style>
