@@ -27,12 +27,10 @@
           v-if="this.qouteCounter ==0"
           class="empty-list-message"
         >Click the button to get some wisdom</div>
-        <transition-group v-else name="fade" tag="ul" class="recent-quotes">
+        <transition-group v-else name="fade" tag="ul">
           <li v-for="quoteitem in quoteList" :key="quoteitem.quote">
-            <div>
-              <p>{{ quoteitem.quote }}</p>
-              <p class="author">{{ quoteitem.author }}</p>
-            </div>
+            <p>{{ quoteitem.quote }}</p>
+            <p class="author">{{ quoteitem.author }}</p>
           </li>
         </transition-group>
       </div>
@@ -110,10 +108,6 @@ h2.subtitle {
   font-size: 1.5em;
 }
 
-.quote-container {
-  margin-top: 50px;
-}
-
 button {
   border: none;
   cursor: pointer;
@@ -121,21 +115,24 @@ button {
   margin-top: 20px;
   background-color: $red-color;
 }
-.recent-quotes {
-  list-style: none;
-  li:nth-child(1) {
-    transform: scale(1.05);
-    margin-bottom: 20px;
-    box-shadow: 0px 0px 15px 3px #c17f7d;
-  }
-  div {
-    font-family: "Roboto Slab", serif;
-    text-align: left;
-    padding: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 7px 1px rgba(230, 230, 230, 1);
-    .author {
-      color: $gray-color;
+.quote-container {
+  margin-top: 50px;
+  ul {
+    list-style: none;
+    li {
+      font-family: "Roboto Slab", serif;
+      text-align: left;
+      padding: 20px;
+      margin-bottom: 10px;
+      box-shadow: 0px 0px 7px 1px rgba(230, 230, 230, 1);
+      &:nth-child(1) {
+        transform: scale(1.05);
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 15px 3px #c17f7d;
+      }
+      .author {
+        color: $gray-color;
+      }
     }
   }
 }

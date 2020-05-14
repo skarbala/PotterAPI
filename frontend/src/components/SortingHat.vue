@@ -1,13 +1,14 @@
 <template>
   <div class="main">
-    <h1 class="heading">Sorting Hat</h1>
-    <button class="main sort" v-on:click="getQuote">Sort me</button>
+    <h1 class="title">Sorting Hat</h1>
+    <h2 class="subtitle">Find yourself a new home in Hogwarts</h2>
+    <button class="main" v-on:click="getQuote">Sort me</button>
     <div class="row">
       <div class="col-md-6">
         <img class="hat" src="../assets/sortinghat.jpg" alt />
       </div>
       <div class="col-md-4 my-auto message">
-        <h1 class="message" v-if="quote">{{quote.sortingHatSays}}</h1>
+        <h1 v-if="quote">{{quote.sortingHatSays}}</h1>
         <h2 v-else>Click sort me and get yourself a house</h2>
       </div>
     </div>
@@ -32,25 +33,33 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-div.message {
-  h1 {
-    text-align: left;
-    color: rgb(45, 41, 32);
+<style lang="scss" scoped >
+$gray-color: rgb(189, 189, 189);
+div.main {
+  font-family: "Roboto Slab", serif;
+  h2.subtitle {
+    color: $gray-color;
+    font-size: 1.5em;
   }
-  h2 {
-    text-align: center;
-    color: rgb(154, 154, 154);
+  div.message {
+    h1 {
+      text-align: left;
+      color: rgb(45, 41, 32);
+    }
+    h2 {
+      text-align: center;
+      color: $gray-color;
+    }
   }
-  img.hat {
+  .hat {
     width: 60%;
   }
-}
-
-button.sort {
-  background-color: #3f3f8c;
-  &:hover {
-    background-color: #333373;
+  button {
+    margin-top: 20px;
+    background-color: #3f3f8c;
+    &:hover {
+      background-color: #333373;
+    }
   }
 }
 </style>

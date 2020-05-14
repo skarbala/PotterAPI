@@ -26,10 +26,11 @@ export default {
 a {
   color: #212529;
   &:hover {
-    color: black;
+    color: #822724;
   }
   &.router-link-exact-active {
-    border-bottom: 1px solid #212529;
+    border-bottom: 1px solid #822724;
+    color: #822724;
   }
 }
 </style>
