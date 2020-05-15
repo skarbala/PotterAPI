@@ -51,7 +51,9 @@ export default {
       this.showModal = false;
     },
     clearAll: function() {
-      this.$http.get("spells/actions/deleteAll").then(() => (this.spells = []));
+      this.$http
+        .delete("spells/actions/deleteAll")
+        .then(() => (this.spells = []));
     },
     reset: function() {
       this.$http.get("spells/actions/reset").then(response => {

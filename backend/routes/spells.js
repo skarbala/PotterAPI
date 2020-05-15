@@ -13,7 +13,7 @@ router.get('/:spellId', spellController.specific_spell)
 
 router.delete('/:spellId', spellController.delete_spell)
 
-router.get('/actions/deleteAll', spellController.delete_all)
+router.delete('/actions/deleteAll', spellController.delete_all)
 
 router.get('/actions/reset', spellController.reset)
 
