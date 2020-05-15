@@ -97,7 +97,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$gray-color: rgb(189, 189, 189);
+$gray-color: rgb(155, 154, 154);
 $red-color: #822724;
 h1.title {
   font-family: "Roboto Slab", serif;
