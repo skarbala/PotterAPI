@@ -1,5 +1,6 @@
 # PotterAPI
-
+This project allows you to dive into magical world of Harry Potter
+Sort yourself, explore spells and level up by reading quotes full of wisdom!
 ### Prerequisites
 1. Installed [NodeJS](https://nodejs.org/en/)
 
