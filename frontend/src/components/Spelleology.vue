@@ -4,7 +4,7 @@
         <div class="col-md-12 mx-auto">
             <search-component v-model="search"/>
             <input type="checkbox" id="unforgivableOnly" v-model="unforgivableOnly">
-            <label for="unforgivableOnly">Filter unforgivable only</label>
+            <label for="unforgivableOnly">Unforgivable only</label>
             <div>
                 <button v-on:click="clearAll" class="spell-button">Delete all</button>
                 <button v-on:click="reset" class="spell-button">Reset</button>
