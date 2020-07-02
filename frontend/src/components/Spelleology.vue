@@ -2,9 +2,13 @@
     <div class="main spells-main">
         <h1 class="text-center title">Spelleology</h1>
         <div class="col-md-12 mx-auto">
-            <search-component v-model="search"/>
-            <input type="checkbox" id="unforgivableOnly" v-model="unforgivableOnly">
-            <label for="unforgivableOnly">Unforgivable only</label>
+            <div class="col-md-6 row mx-auto">
+                <search-component class="col" v-model="search"/>
+                <div class="col-md-4 unforgivable-checkbox">
+                    <input type="checkbox" id="unforgivableOnly" v-model="unforgivableOnly">
+                    <label for="unforgivableOnly">Unforgivable only</label>
+                </div>
+            </div>
             <div>
                 <button v-on:click="clearAll" class="spell-button">Delete all</button>
                 <button v-on:click="reset" class="spell-button">Reset</button>
@@ -88,13 +92,15 @@
         }
     }
 
+    div.unforgivable-checkbox {
+        padding:20px 0;
+        label {
+            color: white;
+            padding: 0 10px;
+            font-family: "Kanit", serif;
+            font-size: 1.2em;
 
-    label {
-        color: white;
-        padding: 1px 20px;
-        font-family: "Kanit", serif;
-        font-size: 1.2em;
-
+        }
     }
 
 
