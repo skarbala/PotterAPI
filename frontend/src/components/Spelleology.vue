@@ -28,11 +28,9 @@
                 <button v-on:click="reset" class="spell-button">Reset</button>
             </div>
             <div class="row col-md-12 mx-auto">
-                <h1 class="subtitle text-center mx-auto" v-if="filteredList.length ===0">No magic to show</h1>
-
                 <spell-list v-if="spells.length >=1" :spells="filteredList" v-on:clickOnspell="selectSpell"/>
             </div>
-            <h1 class="subtitle text-center" v-if="spells.length ===0">Mischief managed</h1>
+            <h1 class="subtitle text-center" v-if="spells.length ===0 || filteredList.length ===0">Mischief managed</h1>
             <modal :spell="selectedSpell" v-show="showModal" @close="closeModal"/>
         </div>
     </div>
