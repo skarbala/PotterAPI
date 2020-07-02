@@ -9,6 +9,20 @@
                     <label for="unforgivableOnly">Unforgivable only</label>
                 </div>
             </div>
+            <div class="type-filter">
+                <input type="checkbox" id="spell" value="Spell" v-model="checkedSpells" >
+                <label for="spell">Spell</label>
+                <input type="checkbox" id="charm" value="Charm" v-model="checkedSpells" >
+                <label for="charm">Charm</label>
+                <input type="checkbox" id="curse" value="Curse" v-model="checkedSpells" >
+                <label for="curse">Curse</label>
+                <input type="checkbox" id="enchantment" value="Enchantment" v-model="checkedSpells" >
+                <label for="enchantment">Enchantment</label>
+                <input type="checkbox" id="hex" value="Hex" v-model="checkedSpells" >
+                <label for="hex">Hex</label>
+                <input type="checkbox" id="jinx" value="Jinx" v-model="checkedSpells" >
+                <label for="jinx">Jinx</label>
+            </div>
             <div>
                 <button v-on:click="clearAll" class="spell-button">Delete all</button>
                 <button v-on:click="reset" class="spell-button">Reset</button>
@@ -35,11 +49,13 @@
             Modal
         },
         data: function () {
-            return {spells: [], selectedSpell: "", showModal: false, search: "", unforgivableOnly: false};
+            return {spells: [], selectedSpell: "", showModal: false, search: "", unforgivableOnly: false,
+                checkedSpells:['Charm', 'Enchantment', 'Curse', 'Spell', 'Hex', 'Jinx']};
         },
         computed: {
             filteredList: function () {
                 let spells = this.spells.filter(spell => spell.effect.toLowerCase().includes(this.search.toLowerCase()));
+                spells = spells.filter(spell => this.checkedSpells.includes(spell.type))
                 if (this.unforgivableOnly) {
                     spells = spells.filter(spell => spell.isUnforgivable === true);
                 }
@@ -92,15 +108,16 @@
         }
     }
 
-    div.unforgivable-checkbox {
-        padding:20px 0;
         label {
             color: white;
             padding: 0 10px;
             font-family: "Kanit", serif;
-            font-size: 1.2em;
-
+            font-size: 1.5em;
         }
+
+    div.unforgivable-checkbox {
+        padding: 20px 0;
+
     }
 
 
