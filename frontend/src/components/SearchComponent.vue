@@ -4,6 +4,8 @@
     type="text"
     class="search"
     placeholder="search for spell effect"
+    id="search"
+    data-test="search-input"
     v-bind="$attrs"
     v-bind:value="value"
     v-on="inputListeners"
