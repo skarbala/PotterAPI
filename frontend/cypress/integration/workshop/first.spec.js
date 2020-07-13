@@ -56,5 +56,12 @@ describe("first examples", () => {
     cy.get(".quote-container ul li").should("have.length", 3)
 
   })
+
+  it("should display one of the houses", () => {
+    cy.visit('http://localhost:8080/#/sortingHat');
+    cy.get('div.main > .main').click();
+    cy.get('.col-md-4 > h1')
+      .then(element => expect(element.text()).to.be.oneOf(['Hufflepuff', 'Gryffindor', 'Ravenclaw', 'Slytherin']))
+  })
 })
 
