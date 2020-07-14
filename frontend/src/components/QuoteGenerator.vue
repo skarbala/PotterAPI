@@ -7,13 +7,13 @@
       <button v-on:click="getQuote" class="main" data-test="get-quote">Get Quote</button>
       <div class="row wisdom-level col-md-8 mx-auto">
         <div class="col">
-          <p>
+          <p class="wisdom-points">
             <span>wisdom points</span>
             +{{this.quoteList.length}}
           </p>
         </div>
         <div class="col">
-          <p>
+          <p class="wisdom-level">
             <span>current level</span>
             {{wizardLevel}}
           </p>
