@@ -8,8 +8,7 @@
       <div class="row wisdom-level col-md-8 mx-auto">
         <div class="col">
           <p class="wisdom-points">
-            <span>wisdom points</span>
-            +{{this.quoteList.length}}
+            <span>wisdom points +{{this.quoteList.length}}</span>
           </p>
         </div>
         <div class="col">
