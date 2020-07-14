@@ -3,6 +3,7 @@
 
 describe("Feature: Spelleology", () => {
     beforeEach('open page', () => {
+        cy.request('http://localhost:3000/spells/actions/reset')
         cy.visit("http://localhost:8080/#/spelleology");
     })
     it("Filter unforgivable spells only", () => {
@@ -43,7 +44,7 @@ describe("Feature: Spelleology", () => {
         cy.get(".modal-header").should("not.be.visible")
     });
 
-    it("modal should be closed when user clicks on close", () => {
+    it("Modal should be closed when user clicks on close", () => {
         cy.contains("makes an object repel water").click()
         cy.get(".modal-header").should("be.visible")
         cy.get(".btn-block").contains("Close").click()
@@ -55,5 +56,10 @@ describe("Feature: Spelleology", () => {
         cy.get('.spells li')
             .should('have.length', 151)
     })
-
+    it('Should reset spells', () => {
+        cy.visit("http://localhost:8080/#/spelleology")
+        cy.get('#deleteAll').click();
+        cy.get('#resetSpells').click();
+        cy.get('ul.spells li').should('have.length', 151)
+    });
 })

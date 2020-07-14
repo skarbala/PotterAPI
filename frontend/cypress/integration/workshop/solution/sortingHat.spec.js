@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 
-describe("Feature: Spelleology", () => {
+describe("Feature: Sorting hat", () => {
     beforeEach('open page', () => {
         cy.visit("http://localhost:8080/#/sortingHat");
     })
@@ -20,6 +20,7 @@ describe("Feature: Spelleology", () => {
         cy.get('[data-test=sort-button]')
             .should('have.css', 'background-color', 'rgb(63, 63, 140)')
     })
+
     it('Display replaced response', () => {
         cy.server();
         const fakeResponse = {
