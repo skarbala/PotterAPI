@@ -4,7 +4,7 @@
     <h2 class="subtitle">Level up by getting some wisdom</h2>
 
     <div class="quote-controls">
-      <button v-on:click="getQuote" class="main">Get Quote</button>
+      <button v-on:click="getQuote" class="main" data-test="get-quote">Get Quote</button>
       <div class="row wisdom-level col-md-8 mx-auto">
         <div class="col">
           <p>
@@ -27,7 +27,7 @@
           v-if="this.qouteCounter ==0"
           class="empty-list-message"
         >Click the button to get some wisdom</div>
-        <transition-group v-else name="fade" tag="ul">
+        <transition-group v-else name="fade" tag="ul" class="quote-list">
           <li v-for="quoteitem in quoteList" :key="quoteitem.quote">
             <p>{{ quoteitem.quote }}</p>
             <p class="author">{{ quoteitem.author }}</p>

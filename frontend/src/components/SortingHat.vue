@@ -2,14 +2,19 @@
   <div class="main">
     <h1 class="title">Sorting Hat</h1>
     <h2 class="subtitle">Find yourself a new home in Hogwarts</h2>
-    <button class="main" :disabled="disabled" v-on:click="getQuote">{{sortButtonLabel}}</button>
+    <button
+      class="main"
+      data-test="sort-button"
+      :disabled="disabled"
+      v-on:click="getQuote"
+    >{{sortButtonLabel}}</button>
     <div class="row">
       <div class="col-md-6">
         <img class="hat" src="../assets/sortinghat.jpg" alt />
       </div>
       <div class="col-md-4 my-auto message">
-        <h2 v-if="quote">{{quote.sortingHatSays}}</h2>
-        <h1 v-if="quote">{{quote.house}}</h1>
+        <h2 v-if="quote" data-test="result-message">{{quote.sortingHatSays}}</h2>
+        <h1 v-if="quote" data-test="house-result">{{quote.house}}</h1>
         <h3 class="message" v-else>{{loadingMessage}}</h3>
       </div>
     </div>
