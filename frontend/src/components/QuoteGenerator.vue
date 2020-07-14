@@ -5,17 +5,12 @@
 
     <div class="quote-controls">
       <button v-on:click="getQuote" class="main" data-test="get-quote">Get Quote</button>
-      <div class="row wisdom-level col-md-8 mx-auto">
+      <div class="row wisdom-level col-md-10 mx-auto">
         <div class="col">
-          <p class="wisdom-points">
-            <span>wisdom points +{{this.quoteList.length}}</span>
-          </p>
+          <p data-test="wisdom-points">wisdom points +{{this.quoteList.length}}</p>
         </div>
         <div class="col">
-          <p class="wisdom-level">
-            <span>current level</span>
-            {{wizardLevel}}
-          </p>
+          <p data-test="wisdom-level">current level {{wizardLevel}}</p>
         </div>
       </div>
     </div>
@@ -157,13 +152,12 @@ button {
       transform: scale(1.1);
     }
   }
+
   .wisdom-level {
     margin-top: 20px;
     p {
-      span {
-        color: $gray-color;
-        font-weight: 300;
-      }
+      color: $gray-color;
+      font-weight: 300;
     }
   }
 }
