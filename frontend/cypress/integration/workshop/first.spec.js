@@ -63,5 +63,10 @@ describe("first examples", () => {
     cy.get('.col-md-4 > h1')
       .then(element => expect(element.text()).to.be.oneOf(['Hufflepuff', 'Gryffindor', 'Ravenclaw', 'Slytherin']))
   })
-})
+  it.only('should display correct color for the main button', () => {
+    cy.visit('http://localhost:8080/#/sortingHat');
+    cy.get('div.main > .main').should('have.css', 'background-color', 'rgb(63, 63, 140)');
 
+  })
+
+})
