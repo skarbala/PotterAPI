@@ -30,12 +30,7 @@
           data-test="delete-all"
           class="spell-button"
         >Delete all</button>
-        <button
-          v-on:click="reset"
-          id="resetSpells"
-          data-test="delete-all"
-          class="spell-button"
-        >Reset</button>
+        <button v-on:click="reset" id="resetSpells" data-test="reset" class="spell-button">Reset</button>
       </div>
       <div class="row col-md-12 mx-auto">
         <spell-list
@@ -63,54 +58,56 @@ export default {
   components: {
     SpellList,
     SearchComponent,
-    Modal
+    Modal,
   },
-  data: function() {
+  data: function () {
     return {
       spells: [],
       selectedSpell: "",
       showModal: false,
       search: "",
       unforgivableOnly: false,
-      checkedSpells: ["Charm", "Enchantment", "Curse", "Spell", "Hex", "Jinx"]
+      checkedSpells: ["Charm", "Enchantment", "Curse", "Spell", "Hex", "Jinx"],
     };
   },
   computed: {
-    filteredList: function() {
+    filteredList: function () {
       let spells = this.spells;
-      spells = spells.filter(spell =>
+      spells = spells.filter((spell) =>
         spell.effect.toLowerCase().includes(this.search.toLowerCase())
       );
-      spells = spells.filter(spell => this.checkedSpells.includes(spell.type));
+      spells = spells.filter((spell) =>
+        this.checkedSpells.includes(spell.type)
+      );
       if (this.unforgivableOnly) {
-        spells = spells.filter(spell => spell.isUnforgivable === true);
+        spells = spells.filter((spell) => spell.isUnforgivable === true);
       }
       return spells;
-    }
+    },
   },
 
-  created: function() {
-    this.$http.get("/spells").then(response => (this.spells = response.data));
+  created: function () {
+    this.$http.get("/spells").then((response) => (this.spells = response.data));
   },
   methods: {
-    selectSpell: function(spell) {
+    selectSpell: function (spell) {
       this.selectedSpell = spell;
       this.showModal = true;
     },
     closeModal() {
       this.showModal = false;
     },
-    clearAll: function() {
+    clearAll: function () {
       this.$http
         .delete("spells/actions/deleteAll")
         .then(() => (this.spells = []));
     },
-    reset: function() {
-      this.$http.get("spells/actions/reset").then(response => {
+    reset: function () {
+      this.$http.get("spells/actions/reset").then((response) => {
         this.spells = response.data.spells;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
