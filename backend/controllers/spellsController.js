@@ -22,7 +22,10 @@ exports.spells_list = function (req, res) {
     if (typeof req.query.limit !== 'undefined') {
         result = result.slice(0, req.query.limit);
     }
-    return res.json(result);
+
+    setTimeout(() => {
+        return res.json(result);
+    }, 100)
 }
 exports.delete_all = function (req, res) {
     spells = [];
