@@ -24,9 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      - name: Run backend
+        run: cd backend && npm install && npm start
       # Runs a single command using the runners shell
-      - name: Install frontend
+      - name: Run frontend
         run: cd frontend && npm install && npm run serve
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
