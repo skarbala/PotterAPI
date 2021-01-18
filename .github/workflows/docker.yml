@@ -29,4 +29,4 @@ jobs:
           context: .
           file: ./backend/Dockerfile
           push: true
-          tags: user/app:latest
+          tags: furboslav/potterapi_be:latest
