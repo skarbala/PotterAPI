@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "Navigation"
+  name: "NavigationComponent"
 };
 </script>
 <style lang="scss">

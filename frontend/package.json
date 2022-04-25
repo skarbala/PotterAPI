@@ -11,14 +11,15 @@
   "dependencies": {
     "axios": "^0.27.0",
     "core-js": "^3.6.4",
-    "vue": "^3.2.33",
-    "vue-router": "^4.0.14"
+    "url": "^0.11.0",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.3"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.5.4",
     "@vue/cli-plugin-babel": "^5.0.4",
     "@vue/cli-plugin-eslint": "~5.0.4",
     "@vue/cli-service": "~5.0.4",
-    "babel-eslint": "^10.1.0",
     "eslint": "^8.14.0",
     "eslint-plugin-vue": "^8.7.1",
     "sass": "^1.50.1",
@@ -36,7 +37,7 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser"
     },
     "rules": {}
   },
