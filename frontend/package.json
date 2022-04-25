@@ -9,7 +9,7 @@
     "start": "npm run serve"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^0.27.0",
     "core-js": "^3.6.4",
     "vue": "^3.2.33",
     "vue-router": "^3.1.6"
