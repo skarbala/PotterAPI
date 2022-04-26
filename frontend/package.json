@@ -9,21 +9,23 @@
     "start": "npm run serve"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.27.0",
     "core-js": "^3.6.4",
-    "vue": "^2.6.11",
-    "vue-router": "^3.1.6"
+    "url": "^0.11.0",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "@babel/eslint-parser": "^7.5.4",
+    "@vue/cli-plugin-babel": "^5.0.4",
+    "@vue/cli-plugin-eslint": "~5.0.4",
+    "@vue/cli-service": "~5.0.4",
+    "eslint": "^8.14.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "sass": "^1.50.1",
+    "sass-loader": "^12.6.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^5.72.0"
   },
   "eslintConfig": {
     "root": true,
@@ -35,7 +37,7 @@
       "eslint:recommended"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser"
     },
     "rules": {}
   },

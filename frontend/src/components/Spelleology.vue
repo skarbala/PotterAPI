@@ -54,7 +54,7 @@ import SearchComponent from "./SearchComponent.vue";
 import Modal from "./Modal.vue";
 
 export default {
-  name: "Spelleology",
+  name: "SpelleologyComponent",
   components: {
     SpellList,
     SearchComponent,

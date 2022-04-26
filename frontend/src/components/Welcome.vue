@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "Welcome"
+  name: "WelcomeComponent"
 };
 </script>
 <style lang="scss" scoped>

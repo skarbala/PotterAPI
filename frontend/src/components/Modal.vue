@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "Modal",
+  name: "ModalComponent",
   props: ["spell"],
 
   methods: {
