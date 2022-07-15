@@ -68,9 +68,10 @@ exports.update_spell = function (req, res) {
         isUnforgivable: req.body.isUnforgivable,
         id: result.id
     }
+    const validation = schema.validate(newSpell);
 
-    result = joi.validate(newSpell, schema);
-    const { value, error } = result;
+
+    const { value, error } = validation;
     const valid = error == null;
 
     if (!valid) {
@@ -109,8 +110,9 @@ exports.new_spell = function (req, res) {
         })
     }
 
-    result = joi.validate(newSpell, schema);
-    const { value, error } = result;
+    const validation = schema.validate(newSpell);
+
+    const { value, error } = validation;
     const valid = error == null;
     if (!valid) {
         return res.status(422).json({
