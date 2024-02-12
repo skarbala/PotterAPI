@@ -72,6 +72,9 @@ export default {
         };
 
         this.$emit("calculation-done", calculatedData);
+        this.oneTimeInvestment = null;
+        this.selectedFundId = null;
+        this.years = null;
       }
     },
   },

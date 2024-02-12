@@ -49,6 +49,7 @@ export default {
         this.investments.push(investment);
         // Optionally, reset the newInvestment data
         this.newInvestment = null;
+        //this.$refs.calculator.resetInputFields();
       }
     },
     handleRejectOffer() {
