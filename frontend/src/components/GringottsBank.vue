@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <h1>Gringotts Bank</h1>
-    <h2>Investments for witches and wizards</h2>
-    <div class="row">
-      <div class="col">
-        <GringottsCalculator @calculation-done="handleCalculationDone" />
+  <div class="main">
+    <div class="container">
+      <h1>Gringotts Bank</h1>
+      <h2>Investments for witches and wizards</h2>
+      <div class="row">
+        <div class="col">
+          <GringottsCalculator @calculation-done="handleCalculationDone" />
 
-        <GringottsForm
-          v-if="newInvestment"
-          :newInvestment="newInvestment"
-          @create-investment="handleCreateInvestment"
-          @reject-offer="handleRejectOffer"
-        />
-      </div>
-      <div class="col">
-        <GringottsInvestmentList :investments="investments" />
+          <GringottsForm
+            v-if="newInvestment"
+            :newInvestment="newInvestment"
+            @create-investment="handleCreateInvestment"
+            @reject-offer="handleRejectOffer"
+          />
+        </div>
+        <div class="col">
+          <GringottsInvestmentList :investments="investments" />
+        </div>
       </div>
     </div>
   </div>
@@ -66,6 +68,12 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Add your component-specific styles here */
+<style scoped lang="scss">
+div.main {
+  background-color: #eeedeb;
+  h1,
+  h2 {
+    color: #747264;
+  }
+}
 </style>

@@ -107,4 +107,14 @@ select,
 button {
   margin-top: 5px;
 }
+button {
+  background-color: #747264;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px;
+  font-size: 1.2em;
+}
+h2 {
+  color: #747264;
+}
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="mt-5 offer-detail">
+    <h2>The offer</h2>
     <div class="row">
       <div class="col">
         <h4>Your data</h4>
@@ -89,6 +90,7 @@ export default {
 
 <style scoped lang="scss">
 div.offer-detail {
+  padding: 0;
   h4 {
     text-align: left;
   }
@@ -98,5 +100,8 @@ div.offer-detail {
       font-weight: 800;
     }
   }
+}
+h2 {
+  color: #747264;
 }
 </style>
