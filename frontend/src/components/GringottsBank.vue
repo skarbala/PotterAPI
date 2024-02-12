@@ -7,6 +7,7 @@
 
     <GringottsForm
       v-if="newInvestment"
+      :newInvestment="newInvestment"
       @create-investment="handleCreateInvestment"
     />
   </div>

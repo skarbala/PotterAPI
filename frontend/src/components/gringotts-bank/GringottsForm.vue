@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="mt-5">
+    <p>Net income: {{ newInvestment.netIncome }}</p>
+    <p>Interest income: {{ newInvestment.interestIncome }}</p>
+    <p>Risk: {{ newInvestment.fund.name }}</p>
     <label for="customerName">Customer Name:</label>
     <input type="text" id="customerName" v-model="customerName" />
 
@@ -9,6 +12,9 @@
 
 <script>
 export default {
+  props: {
+    newInvestment: Object, // Pass the calculatedData as a prop
+  },
   data() {
     return {
       customerName: "",
