@@ -88,7 +88,7 @@ export default {
 
         this.$emit("calculation-done", calculatedData);
         this.oneTimeInvestment = null;
-        this.selectedFundId = null;
+        this.selectedFundId = "";
         this.years = null;
       }
     },
