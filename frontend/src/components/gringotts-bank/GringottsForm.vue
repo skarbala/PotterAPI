@@ -1,6 +1,7 @@
 <template>
   <div class="mt-5 offer-detail">
     <h2>The offer</h2>
+    <hr />
     <div class="row">
       <div class="col">
         <h4>Your data</h4>
@@ -36,7 +37,7 @@
         type="text"
         id="customerName"
         v-model="customerName"
-        placeholder="name"
+        placeholder="enter your name"
       />
     </div>
 
@@ -90,7 +91,18 @@ export default {
 
 <style scoped lang="scss">
 div.offer-detail {
-  padding: 0;
+  button {
+    font-weight: 700;
+  }
+  input {
+    border-radius: 0;
+  }
+  hr {
+    background-color: #fff;
+  }
+  color: #fff;
+  background-color: #747264;
+  padding: 20px;
   h4 {
     text-align: left;
   }
@@ -103,6 +115,6 @@ div.offer-detail {
 }
 h2 {
   text-align: left;
-  color: #747264;
+  font-weight: 900;
 }
 </style>

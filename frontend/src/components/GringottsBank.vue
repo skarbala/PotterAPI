@@ -12,7 +12,7 @@
       </div>
 
       <div class="row mt-5">
-        <div class="col">
+        <div class="col mx-5">
           <GringottsCalculator @calculation-done="handleCalculationDone" />
 
           <GringottsForm
@@ -22,7 +22,7 @@
             @reject-offer="handleRejectOffer"
           />
         </div>
-        <div class="col">
+        <div class="col mx-5">
           <GringottsInvestmentList :investments="investments" />
         </div>
       </div>
