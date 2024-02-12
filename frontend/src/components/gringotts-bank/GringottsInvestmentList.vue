@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Gringotts Investment List</h2>
+
     <ul class="investment-list mt-3">
       <li class="my-2" v-for="(investment, index) in investments" :key="index">
         <h4>
@@ -37,10 +38,18 @@
                 }}
               </span>
             </p>
-            <button @click="deleteInvestment(index)" class="delete-button">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-danger float-left"
+              @click="deleteInvestment(index)"
+            >
               Delete
             </button>
           </div>
+          <div class="col"></div>
         </div>
       </li>
     </ul>
