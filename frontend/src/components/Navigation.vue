@@ -5,7 +5,9 @@
         <router-link class="nav-link" to="/">Welcome</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" to="/spelleology">Spelleology</router-link>
+        <router-link class="nav-link" to="/spelleology"
+          >Spelleology</router-link
+        >
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/sortingHat">Sorting Hat</router-link>
@@ -13,13 +15,18 @@
       <li class="nav-item">
         <router-link class="nav-link" to="/quotes">Quote Generator</router-link>
       </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/gringottsBank"
+          >Gringotts Bank</router-link
+        >
+      </li>
     </ul>
   </nav>
 </template>  
 
 <script>
 export default {
-  name: "NavigationComponent"
+  name: "NavigationComponent",
 };
 </script>
 <style lang="scss">
