@@ -68,9 +68,11 @@ export default {
 <style scoped lang="scss">
 h2 {
   color: #747264;
+  text-align: left;
 }
 ul.investment-list {
   list-style: none;
+  padding: 0;
   li {
     hr {
       background-color: #fff;

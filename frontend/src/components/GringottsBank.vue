@@ -1,9 +1,17 @@
 <template>
   <div class="main">
     <div class="container">
-      <h1>Gringotts Bank</h1>
-      <h2>Investments for witches and wizards</h2>
       <div class="row">
+        <div class="col-2">
+          <img src="../assets/gringottsbanklogo.png" alt="" />
+        </div>
+        <div class="col-10">
+          <h1>Gringotts Bank</h1>
+          <h2>Investments for witches and wizards</h2>
+        </div>
+      </div>
+
+      <div class="row mt-5">
         <div class="col">
           <GringottsCalculator @calculation-done="handleCalculationDone" />
 
@@ -70,10 +78,14 @@ export default {
 
 <style scoped lang="scss">
 div.main {
+  img {
+    width: 70%;
+  }
   background-color: #eeedeb;
   h1,
   h2 {
     color: #747264;
+    text-align: left;
   }
 }
 </style>

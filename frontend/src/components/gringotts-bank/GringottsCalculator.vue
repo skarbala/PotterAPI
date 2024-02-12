@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Gringotts Calculator</h2>
+    <h2>Enter your data muggle!</h2>
 
     <div class="input-group mb-3">
       <select class="custom-select" id="selectedFund" v-model="selectedFundId">
@@ -117,5 +117,6 @@ button {
 }
 h2 {
   color: #747264;
+  text-align: left;
 }
 </style>

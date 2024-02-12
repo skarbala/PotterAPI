@@ -102,6 +102,7 @@ div.offer-detail {
   }
 }
 h2 {
+  text-align: left;
   color: #747264;
 }
 </style>
