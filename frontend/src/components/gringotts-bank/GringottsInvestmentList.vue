@@ -5,11 +5,12 @@
       <li class="my-2" v-for="(investment, index) in investments" :key="index">
         <h4>
           Investment issued for <span>{{ investment.customerName }}</span>
+          <hr />
         </h4>
 
         <div class="row">
           <div class="col">
-            <h5>Your data</h5>
+            <h5>Customer data</h5>
             <p>
               Investment:
               {{ formatAsMoneyGBP(investment.oneTimeInvestment) }}
@@ -71,10 +72,13 @@ h2 {
 ul.investment-list {
   list-style: none;
   li {
+    hr {
+      background-color: #fff;
+    }
     h4 {
       text-align: left;
       span {
-        font-weight: 700;
+        font-weight: 900;
       }
     }
     color: #fff;
@@ -88,6 +92,12 @@ ul.investment-list {
     }
     h5 {
       text-align: left;
+    }
+    transition: all 200ms ease-in;
+
+    &:hover {
+      background-color: #817f71;
+      cursor: pointer;
     }
   }
 }

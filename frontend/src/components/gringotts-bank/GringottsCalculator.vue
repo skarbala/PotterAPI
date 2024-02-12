@@ -105,7 +105,8 @@ label {
 input,
 select,
 button {
-  margin-top: 5px;
+  margin-top: 0px;
+  border-radius: 0;
 }
 button {
   background-color: #747264;
