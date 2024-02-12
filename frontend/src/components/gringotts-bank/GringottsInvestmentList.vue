@@ -46,18 +46,41 @@
             >
               Delete
             </button>
+            <button
+              class="btn btn-primary float-left ml-2"
+              @click="openInvestmentModal(index)"
+            >
+              View Details
+            </button>
           </div>
           <div class="col"></div>
         </div>
       </li>
     </ul>
+    <GringottsInvestmentModal
+      v-if="selectedInvestment !== null"
+      :investment="selectedInvestment"
+      :is-open="isModalOpen"
+      @close-investment-modal="closeInvestmentModal"
+    />
   </div>
 </template>
 
 <script>
+import GringottsInvestmentModal from "../gringotts-bank/GringottsInvestmentModal.vue";
+
 export default {
   props: {
     investments: Array, // Array of investments passed as a prop
+  },
+  components: {
+    GringottsInvestmentModal,
+  },
+  data() {
+    return {
+      selectedInvestment: null,
+      isModalOpen: false,
+    };
   },
   methods: {
     formatAsMoneyGBP(number) {
@@ -75,6 +98,14 @@ export default {
     deleteInvestment(index) {
       // Trigger the deletion of the investment at the specified index
       this.$emit("delete-investment", index);
+    },
+    openInvestmentModal(index) {
+      this.selectedInvestment = this.investments[index];
+      this.isModalOpen = true;
+    },
+    closeInvestmentModal() {
+      this.selectedInvestment = null;
+      this.isModalOpen = false;
     },
   },
 };
