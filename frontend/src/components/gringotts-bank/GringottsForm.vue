@@ -1,15 +1,50 @@
 <template>
-  <div class="mt-5">
-    <p>Net income: {{ newInvestment.netIncome }}</p>
-    <p>Interest income: {{ newInvestment.interestIncome }}</p>
-    <p>Risk: {{ newInvestment.fund.name }}</p>
-    <label for="customerName">Customer Name:</label>
-    <input type="text" id="customerName" v-model="customerName" />
+  <div class="mt-5 offer-detail">
+    <div class="row">
+      <div class="col">
+        <h4>Your data</h4>
+        <p>
+          Investment: {{ formatAsMoneyGBP(newInvestment.oneTimeInvestment) }}
+        </p>
+        <p>Period: {{ newInvestment.years }} years</p>
+        <p>Fund: {{ newInvestment.fund.name }}</p>
+      </div>
 
-    <button class="btn btn-primary" @click="createInvestment">
+      <div class="col">
+        <h4>Our calculations</h4>
+        <p>Net income: {{ formatAsMoneyGBP(newInvestment.netIncome) }}</p>
+        <p>
+          Interest income: {{ formatAsMoneyGBP(newInvestment.interestIncome) }}
+        </p>
+        <p>
+          <span>
+            Total income:
+            {{
+              formatAsMoneyGBP(
+                newInvestment.netIncome + newInvestment.interestIncome
+              )
+            }}
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input
+        class="form-control"
+        aria-describedby="inputGroup-sizing-default"
+        type="text"
+        id="customerName"
+        v-model="customerName"
+        placeholder="name"
+      />
+    </div>
+
+    <button class="btn btn-success mx-3" @click="createInvestment">
       Create Investment
     </button>
-    <button class="btn btn-secondary" @click="rejectOffer">Reject Offer</button>
+    <button class="btn btn-danger mx-3" @click="rejectOffer">
+      Reject Offer
+    </button>
   </div>
 </template>
 
@@ -24,9 +59,21 @@ export default {
     };
   },
   methods: {
+    formatAsMoneyGBP(number) {
+      // Use Intl.NumberFormat to format the number as GBP
+      const formatter = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+
+      // Return the formatted string
+      return formatter.format(number);
+    },
     createInvestment() {
       if (this.customerName) {
-        console.log("emiting");
+        console.log("emitting");
         this.$emit("create-investment", this.customerName);
         // Optionally, clear the input field after creating the investment
         this.customerName = "";
@@ -40,6 +87,16 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Add your component-specific styles here */
+<style scoped lang="scss">
+div.offer-detail {
+  h4 {
+    text-align: left;
+  }
+  p {
+    text-align: left;
+    span {
+      font-weight: 800;
+    }
+  }
+}
 </style>

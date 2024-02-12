@@ -4,6 +4,7 @@
 
     <div class="input-group mb-3">
       <select class="custom-select" id="selectedFund" v-model="selectedFundId">
+        <option disabled value="">Please select fund</option>
         <option
           v-for="(product, index) in products"
           :value="product.id"
@@ -26,10 +27,19 @@
       />
     </div>
 
-    <label for="years">Number of Years:</label>
-    <input type="number" id="years" v-model="years" step="1" />
+    <div class="input-group mb-3">
+      <input
+        class="form-control"
+        aria-describedby="inputGroup-sizing-default"
+        type="number"
+        id="years"
+        v-model="years"
+        step="1"
+        placeholder="years"
+      />
+    </div>
 
-    <button @click="calculate">Make me an offer</button>
+    <button class="btn btn-block" @click="calculate">Make me an offer</button>
   </div>
 </template>
 
@@ -37,7 +47,7 @@
 export default {
   data() {
     return {
-      selectedFundId: null,
+      selectedFundId: "",
       oneTimeInvestment: null,
       years: null,
       products: [
