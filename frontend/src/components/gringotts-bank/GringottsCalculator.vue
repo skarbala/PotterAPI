@@ -1,25 +1,30 @@
 <template>
   <div>
     <h2>Gringotts Calculator</h2>
-    <label for="selectedFund">Select your fund:</label>
-    <select id="selectedFund" v-model="selectedFundId">
-      <option value="" disabled>Select your fund</option>
-      <option
-        v-for="(product, index) in products"
-        :value="product.id"
-        :key="index"
-      >
-        {{ product.name }}
-      </option>
-    </select>
 
-    <label for="oneTimeInvestment">One-time Investment:</label>
-    <input
-      type="number"
-      id="oneTimeInvestment"
-      v-model="oneTimeInvestment"
-      step="1000"
-    />
+    <div class="input-group mb-3">
+      <select class="custom-select" id="selectedFund" v-model="selectedFundId">
+        <option
+          v-for="(product, index) in products"
+          :value="product.id"
+          :key="index"
+        >
+          {{ product.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <input
+        class="form-control"
+        aria-describedby="inputGroup-sizing-default"
+        type="number"
+        id="oneTimeInvestment"
+        v-model="oneTimeInvestment"
+        step="1000"
+        placeholder="one time investment"
+      />
+    </div>
 
     <label for="years">Number of Years:</label>
     <input type="number" id="years" v-model="years" step="1" />
