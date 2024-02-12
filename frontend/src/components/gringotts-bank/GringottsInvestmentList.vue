@@ -11,7 +11,6 @@
 
         <div class="row">
           <div class="col">
-            <h5>Customer data</h5>
             <p>
               Investment:
               {{ formatAsMoneyGBP(investment.oneTimeInvestment) }}
@@ -22,7 +21,6 @@
           </div>
 
           <div class="col">
-            <h5>Our calculations</h5>
             <p>Net income: {{ formatAsMoneyGBP(investment.netIncome) }}</p>
             <p>
               Interest income:
