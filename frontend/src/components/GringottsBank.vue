@@ -1,41 +1,46 @@
-<!-- GringottsBank.vue -->
-
 <template>
   <div>
     <h1>Gringotts Bank</h1>
     <h2>Investments for witches and wizards</h2>
 
-    <GringottCalculator @calculation-done="handleCalculationDone" />
+    <GringottsCalculator @calculation-done="handleCalculationDone" />
 
-    <!-- Display GringottsForm when newInvestment is filled -->
+    <GringottsForm @create-investment="handleCreateInvestment" />
   </div>
 </template>
 
 <script>
-import GringottCalculator from "../components/gringotts-bank/GringottCalculator.vue";
+import GringottsCalculator from "../components/gringotts-bank/GringottsCalculator.vue";
+import GringottsForm from "../components/gringotts-bank/GringottsForm.vue";
 
 export default {
   components: {
-    GringottCalculator,
+    GringottsCalculator,
+    GringottsForm,
   },
   data() {
     return {
       newInvestment: null,
+      investments: [],
     };
   },
   methods: {
-    handleCalculationDone(calculatedData) {
-      this.newInvestment = calculatedData;
+    handleCalculationDone(newInvestmentData) {
+      this.newInvestment = newInvestmentData;
     },
-    handleSubmitInvestment(customerName) {
-      // Handle the submitted investment data, e.g., push it to a list
-      const investmentData = {
-        ...this.newInvestment,
-        customerName,
-      };
-      // You can then push this data to your list or perform other actions
-      this.newInvestment = null;
-      console.log("Submitted Investment Data:", investmentData);
+    handleCreateInvestment(customerName) {
+      if (this.newInvestment) {
+        // Create a new investment object with customer name
+        const investment = {
+          ...this.newInvestment,
+          customerName,
+        };
+        // Log the new investment to the console
+        console.log("New Investment:", investment);
+        this.investments.push(investment);
+        // Optionally, reset the newInvestment data
+        this.newInvestment = null;
+      }
     },
   },
 };
