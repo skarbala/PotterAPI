@@ -24,6 +24,9 @@
         </div>
         <div class="col mx-5">
           <GringottsInvestmentList :investments="investments" />
+          <div v-if="investments.length === 0" class="no-investments-message">
+            <p>No investments yet. Make your first one!</p>
+          </div>
         </div>
       </div>
     </div>
@@ -85,6 +88,10 @@ div.main {
   h1,
   h2 {
     color: #747264;
+    text-align: left;
+  }
+  p {
+    color: #868475;
     text-align: left;
   }
 }
