@@ -17,6 +17,7 @@
             </p>
             <p>Period: {{ investment.years }} years</p>
             <p>Fund: {{ investment.fund.name }}</p>
+            <p>Risk: {{ investment.fund.risk }}</p>
           </div>
 
           <div class="col">
