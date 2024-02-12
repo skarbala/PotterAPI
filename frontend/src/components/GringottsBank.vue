@@ -11,17 +11,21 @@
       @create-investment="handleCreateInvestment"
       @reject-offer="handleRejectOffer"
     />
+
+    <GringottsInvestmentList :investments="investments" />
   </div>
 </template>
 
 <script>
 import GringottsCalculator from "../components/gringotts-bank/GringottsCalculator.vue";
 import GringottsForm from "../components/gringotts-bank/GringottsForm.vue";
+import GringottsInvestmentList from "../components/gringotts-bank/GringottsInvestmentList.vue";
 
 export default {
   components: {
     GringottsCalculator,
     GringottsForm,
+    GringottsInvestmentList,
   },
   data() {
     return {
