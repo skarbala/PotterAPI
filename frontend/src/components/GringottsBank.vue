@@ -23,7 +23,10 @@
           />
         </div>
         <div class="col mx-5">
-          <GringottsInvestmentList :investments="investments" />
+          <GringottsInvestmentList
+            :investments="investments"
+            @delete-investment="handleDeleteInvestment"
+          />
           <div v-if="investments.length === 0" class="no-investments-message">
             <p>No investments yet. Make your first one!</p>
           </div>
@@ -74,6 +77,10 @@ export default {
 
       // Handle the rejected offer, e.g., log a message or perform other actions
       console.log("Offer Rejected");
+    },
+    handleDeleteInvestment(index) {
+      // Handle the deletion of the investment in the parent component
+      this.investments.splice(index, 1);
     },
   },
 };

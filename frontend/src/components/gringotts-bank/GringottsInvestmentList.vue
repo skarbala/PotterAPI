@@ -37,6 +37,9 @@
                 }}
               </span>
             </p>
+            <button @click="deleteInvestment(index)" class="delete-button">
+              Delete
+            </button>
           </div>
         </div>
       </li>
@@ -61,6 +64,10 @@ export default {
 
       // Return the formatted string
       return formatter.format(number);
+    },
+    deleteInvestment(index) {
+      // Trigger the deletion of the investment at the specified index
+      this.$emit("delete-investment", index);
     },
   },
 };
