@@ -9,6 +9,7 @@
       v-if="newInvestment"
       :newInvestment="newInvestment"
       @create-investment="handleCreateInvestment"
+      @reject-offer="handleRejectOffer"
     />
   </div>
 </template>
@@ -45,6 +46,12 @@ export default {
         // Optionally, reset the newInvestment data
         this.newInvestment = null;
       }
+    },
+    handleRejectOffer() {
+      this.newInvestment = null;
+
+      // Handle the rejected offer, e.g., log a message or perform other actions
+      console.log("Offer Rejected");
     },
   },
 };

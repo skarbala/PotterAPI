@@ -6,7 +6,10 @@
     <label for="customerName">Customer Name:</label>
     <input type="text" id="customerName" v-model="customerName" />
 
-    <button @click="createInvestment">Create Investment</button>
+    <button class="btn btn-primary" @click="createInvestment">
+      Create Investment
+    </button>
+    <button class="btn btn-secondary" @click="rejectOffer">Reject Offer</button>
   </div>
 </template>
 
@@ -23,10 +26,15 @@ export default {
   methods: {
     createInvestment() {
       if (this.customerName) {
+        console.log("emiting");
         this.$emit("create-investment", this.customerName);
         // Optionally, clear the input field after creating the investment
         this.customerName = "";
       }
+    },
+    rejectOffer() {
+      // Handle the rejection, e.g., emit an event or perform other actions
+      this.$emit("reject-offer");
     },
   },
 };
