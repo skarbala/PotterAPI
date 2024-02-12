@@ -5,7 +5,10 @@
 
     <GringottsCalculator @calculation-done="handleCalculationDone" />
 
-    <GringottsForm @create-investment="handleCreateInvestment" />
+    <GringottsForm
+      v-if="newInvestment"
+      @create-investment="handleCreateInvestment"
+    />
   </div>
 </template>
 
