@@ -47,6 +47,15 @@ export default {
     GringottsForm,
     GringottsInvestmentList,
   },
+  created: function () {
+    if (localStorage.getItem("investments")) {
+      try {
+        this.investments = JSON.parse(localStorage.getItem("investments"));
+      } catch (e) {
+        localStorage.removeItem("investments");
+      }
+    }
+  },
   data() {
     return {
       newInvestment: null,
@@ -67,6 +76,8 @@ export default {
         // Log the new investment to the console
         console.log("New Investment:", investment);
         this.investments.push(investment);
+        const parsed = JSON.stringify(this.investments);
+        localStorage.setItem("investments", parsed);
         // Optionally, reset the newInvestment data
         this.newInvestment = null;
         //this.$refs.calculator.resetInputFields();
