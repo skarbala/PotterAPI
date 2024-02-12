@@ -76,8 +76,8 @@ export default {
         // Log the new investment to the console
         console.log("New Investment:", investment);
         this.investments.push(investment);
-        const parsed = JSON.stringify(this.investments);
-        localStorage.setItem("investments", parsed);
+
+        this.saveAppliedSavings();
         // Optionally, reset the newInvestment data
         this.newInvestment = null;
         //this.$refs.calculator.resetInputFields();
@@ -92,6 +92,11 @@ export default {
     handleDeleteInvestment(index) {
       // Handle the deletion of the investment in the parent component
       this.investments.splice(index, 1);
+      this.saveAppliedSavings();
+    },
+    saveAppliedSavings() {
+      const parsed = JSON.stringify(this.investments);
+      localStorage.setItem("investments", parsed);
     },
   },
 };
