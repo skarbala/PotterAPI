@@ -94,6 +94,7 @@ export default {
 div.offer-detail {
   button {
     font-weight: 700;
+    border-radius: 0;
   }
   input {
     border-radius: 0;

@@ -41,19 +41,20 @@
         <div class="row">
           <div class="col">
             <button
-              class="btn btn-danger float-left"
-              @click="deleteInvestment(index)"
-            >
-              Delete
-            </button>
-            <button
-              class="btn btn-primary float-left ml-2"
+              class="btn btn-primary mr-2 float-left"
+              id="showDetail"
               @click="openInvestmentModal(index)"
             >
               View Details
             </button>
+            <button
+              class="btn btn-danger float-left"
+              id="delete"
+              @click="deleteInvestment(index)"
+            >
+              Delete
+            </button>
           </div>
-          <div class="col"></div>
         </div>
       </li>
     </ul>
@@ -132,6 +133,17 @@ ul.investment-list {
     color: #fff;
     background-color: #747264;
     padding: 20px;
+    button {
+      border-radius: 0;
+    }
+    button#showDetail {
+      background-color: #504e44;
+      border: none;
+      &:hover {
+        background-color: #676458;
+        cursor: pointer;
+      }
+    }
     p {
       text-align: left;
       span {
