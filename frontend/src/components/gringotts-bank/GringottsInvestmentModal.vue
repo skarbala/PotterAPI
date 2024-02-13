@@ -10,19 +10,29 @@
           <div class="row">
             <div class="col">
               <p>Fund: {{ investment.fund.name }}</p>
-            </div>
-
-            <div class="col">
               <p>Risk: {{ investment.fund.risk }}</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
               <p>Name: {{ investment.customerName }}</p>
-              <p>Investment: {{ investment.oneTimeInvestment }}</p>
+              <p>
+                Investment: {{ formatAsMoneyGBP(investment.oneTimeInvestment) }}
+              </p>
+              <p>Years: {{ investment.years }}</p>
             </div>
-            <div class="col"></div>
+            <div class="col">
+              <p>Net income: {{ formatAsMoneyGBP(investment.netIncome) }}</p>
+              <p>
+                Interest income:
+                {{ formatAsMoneyGBP(investment.interestIncome) }}
+              </p>
+
+              <p>
+                Total income:
+                {{
+                  formatAsMoneyGBP(
+                    investment.netIncome + investment.interestIncome
+                  )
+                }}
+              </p>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -51,6 +61,18 @@ export default {
     closeInvestmentModal() {
       this.$emit("close-investment-modal"); // Emit an event to close the modal
     },
+    formatAsMoneyGBP(number) {
+      // Use Intl.NumberFormat to format the number as GBP
+      const formatter = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+
+      // Return the formatted string
+      return formatter.format(number);
+    },
   },
 };
 </script>
@@ -69,7 +91,7 @@ export default {
   justify-content: center;
   .modal-dialog {
     margin: 0 auto;
-    width: 1000px;
+    width: 1200px;
     .modal-content {
       color: #fff;
       padding: 20px;
