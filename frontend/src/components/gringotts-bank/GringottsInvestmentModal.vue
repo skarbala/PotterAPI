@@ -4,19 +4,26 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h2>{{ investment.customerName }} Investment Details</h2>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-            @click="closeInvestmentModal"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h2>Investment Details</h2>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          <div class="row">
+            <div class="col">
+              <p>Fund: {{ investment.fund.name }}</p>
+            </div>
+
+            <div class="col">
+              <p>Risk: {{ investment.fund.risk }}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p>Name: {{ investment.customerName }}</p>
+              <p>Investment: {{ investment.oneTimeInvestment }}</p>
+            </div>
+            <div class="col"></div>
+          </div>
         </div>
         <div class="modal-footer">
           <button
@@ -24,6 +31,7 @@
             class="btn btn-secondary"
             data-dismiss="modal"
             @click="closeInvestmentModal"
+            id="close"
           >
             Close
           </button>
@@ -59,11 +67,29 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  .modal-dialog {
+    margin: 0 auto;
+    width: 1000px;
+    .modal-content {
+      color: #fff;
+      padding: 20px;
+      border-radius: 0;
+      background-color: #747264;
+      border: none;
+      p {
+        text-align: left;
+      }
 
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+      button#close {
+        background-color: #504e44;
+        border: none;
+        border-radius: 0;
+        &:hover {
+          background-color: #676458;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 </style>
