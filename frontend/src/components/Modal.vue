@@ -3,16 +3,18 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div class="modal-header">
-          <h2 name="header">{{spell.spell}}</h2>
+          <h2 name="header">{{ spell.spell }}</h2>
         </div>
 
         <div class="modal-body">
-          <h3 name="body">{{spell.effect}}</h3>
-          <h4 class="body">{{spell.type}}</h4>
+          <h3 name="body">{{ spell.effect }}</h3>
+          <h4 class="body">{{ spell.type }}</h4>
         </div>
         <div class="modal-footer">
           <slot name="footer">
-            <button class="modal-default-button btn-block btn" @click="close">Close</button>
+            <button class="modal-default-button btn-block btn" @click="close">
+              Close
+            </button>
           </slot>
         </div>
       </div>
@@ -28,12 +30,12 @@ export default {
   methods: {
     close() {
       this.$emit("close");
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style >
+<style scoped >
 .modal-mask {
   position: fixed;
   z-index: 9998;

@@ -6,7 +6,9 @@
         v-bind:key="spell.id"
         v-for="spell in spells"
         v-on:click="$emit('clickOnspell', spell)"
-      >{{spell.effect}}</li>
+      >
+        {{ spell.effect }}
+      </li>
     </ul>
   </div>
 </template>
@@ -16,15 +18,15 @@ export default {
   name: "SpellList",
   props: ["spells"],
   methods: {
-    clickOnspell: function() {
+    clickOnspell: function () {
       this.$emit("selectSpell");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 .spells {
   list-style: none;
   padding: 20px;

@@ -6,6 +6,7 @@ import Spelleology from '../src/components/Spelleology'
 import SortingHat from '../src/components/SortingHat'
 import Welcome from '../src/components/Welcome'
 import QuoteGenerator from '../src/components/QuoteGenerator'
+import GringottsBank from '../src/components/GringottsBank'
 
 const axiosconfig = {
   baseURL: 'http://localhost:3000/',
@@ -20,7 +21,7 @@ const router = new VueRouter({
     { path: '/spelleology', component: Spelleology },
     { path: '/sortingHat', component: SortingHat },
     { path: '/quotes', component: QuoteGenerator },
-
+    { path: '/gringottsBank', component: GringottsBank },
     { path: '/', component: Welcome }
 
   ]
