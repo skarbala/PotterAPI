@@ -4,23 +4,39 @@
     <h2 class="subtitle">Level up by getting some wisdom</h2>
 
     <div class="quote-controls">
-      <button v-on:click="getQuote" class="main" data-test="get-quote">Get Quote</button>
+      <button
+        v-on:click="getQuote"
+        class="main main mx-1"
+        data-test="get-quote"
+      >
+        Get Quote
+      </button>
+      <button
+        class="main mx-1"
+        v-on:click="removeQuote"
+        :disabled="quoteList.length === 0"
+        id="remove-quote"
+      >
+        Remove Quote
+      </button>
+
       <div class="row wisdom-level col-md-10 mx-auto">
         <div class="col">
-          <p data-test="wisdom-points">wisdom points +{{this.quoteList.length}}</p>
+          <p data-test="wisdom-points">
+            wisdom points +{{ this.quoteList.length }}
+          </p>
         </div>
         <div class="col">
-          <p data-test="wisdom-level">current level {{wizardLevel}}</p>
+          <p data-test="wisdom-level">current level {{ wizardLevel }}</p>
         </div>
       </div>
     </div>
 
     <div class="col-md-6 mx-auto">
       <div class="quote-container">
-        <div
-          v-if="this.qouteCounter ==0"
-          class="empty-list-message"
-        >Click the button to get some wisdom</div>
+        <div v-if="this.qouteCounter == 0" class="empty-list-message">
+          Click the button to get some wisdom
+        </div>
         <transition-group v-else name="fade" tag="ul" class="quote-list">
           <li v-for="quoteitem in quoteList" :key="quoteitem.quote">
             <p>{{ quoteitem.quote }}</p>
@@ -35,25 +51,31 @@
 <script>
 export default {
   name: "QuoteGenerator",
-  data: function() {
+  data: function () {
     return {
       quote: "",
       quoteList: [],
-      qouteCounter: ""
+      qouteCounter: "",
     };
   },
   methods: {
-    getQuote: function() {
+    getQuote: function () {
       this.quote = "";
-      this.$http.get("/quote").then(response => {
+      this.$http.get("/quote").then((response) => {
         this.quote = response.data;
         this.quoteList.unshift(this.quote);
         this.qouteCounter++;
       });
-    }
+    },
+    removeQuote: function () {
+      if (this.quoteList.length > 0) {
+        this.quoteList.shift(); // Remove the newest quote
+        this.qouteCounter--;
+      }
+    },
   },
   computed: {
-    wizardLevel: function() {
+    wizardLevel: function () {
       let level = "";
       if (this.qouteCounter <= 5) {
         level = "NOOB";
@@ -86,12 +108,12 @@ export default {
         level = "Azcaban INFLUENCER";
       }
       return level;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
-$gray-color: rgb(155, 154, 154);
+$gray-color: #9b9a9a;
 $red-color: #822724;
 h1.title {
   font-family: "Roboto Slab", serif;
@@ -108,6 +130,18 @@ button {
   padding: 10px 30px;
   margin-top: 20px;
   background-color: $red-color;
+}
+
+button#remove-quote {
+  background-color: black;
+}
+button#remove-quote:disabled {
+  background-color: #9b9a9a;
+
+  cursor: not-allowed;
+  &:active {
+    transform: scale(1);
+  }
 }
 .quote-container {
   margin-top: 50px;
