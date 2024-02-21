@@ -39,7 +39,9 @@
       />
     </div>
 
-    <button class="btn btn-block" @click="calculate">Make me an offer</button>
+    <button class="btn btn-block" @click="calculate" data-test="create-offer">
+      Make me an offer
+    </button>
   </div>
 </template>
 
