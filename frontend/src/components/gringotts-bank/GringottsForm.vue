@@ -3,7 +3,7 @@
     <h2>The offer</h2>
     <hr />
     <div class="row">
-      <div class="col">
+      <div class="col your-data">
         <h4>Your data</h4>
         <p>
           Investment: {{ formatAsMoneyGBP(newInvestment.oneTimeInvestment) }}
@@ -13,7 +13,7 @@
         <p>Risk: {{ newInvestment.fund.risk }}</p>
       </div>
 
-      <div class="col">
+      <div class="col our-calculations">
         <h4>Our calculations</h4>
         <p>Net income: {{ formatAsMoneyGBP(newInvestment.netIncome) }}</p>
         <p>
