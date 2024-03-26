@@ -6,40 +6,34 @@
       <div class="col your-data">
         <h4>Your data</h4>
         <p>
-          Investment: {{ formatAsMoneyGBP(newInvestment.oneTimeInvestment) }}
+          Investment: <span>{{ formatAsMoneyGBP(newInvestment.oneTimeInvestment) }}</span>
         </p>
-        <p>Period: {{ newInvestment.years }} years</p>
-        <p>Fund: {{ newInvestment.fund.name }}</p>
-        <p>Risk: {{ newInvestment.fund.risk }}</p>
+        <p class="period">Period: <span>{{ newInvestment.years }} years</span></p>
+        <p class="fund">Fund: <span>{{ newInvestment.fund.name }}</span></p>
+        <p class="risk">Risk: <span>{{ newInvestment.fund.risk }}</span></p>
       </div>
 
       <div class="col our-calculations">
         <h4>Our calculations</h4>
-        <p>Net income: {{ formatAsMoneyGBP(newInvestment.netIncome) }}</p>
+        <p>Net income: <span> {{ formatAsMoneyGBP(newInvestment.netIncome) }}</span></p>
         <p>
-          Interest income: {{ formatAsMoneyGBP(newInvestment.interestIncome) }}
+          Interest income: <span>{{ formatAsMoneyGBP(newInvestment.interestIncome) }}</span>
         </p>
         <p>
           <span>
             Total income:
             {{
-              formatAsMoneyGBP(
-                newInvestment.netIncome + newInvestment.interestIncome
-              )
-            }}
+            formatAsMoneyGBP(
+              newInvestment.netIncome + newInvestment.interestIncome
+            )
+          }}
           </span>
         </p>
       </div>
     </div>
     <div class="input-group mb-3">
-      <input
-        class="form-control"
-        aria-describedby="inputGroup-sizing-default"
-        type="text"
-        id="customerName"
-        v-model="customerName"
-        placeholder="enter your name"
-      />
+      <input class="form-control" aria-describedby="inputGroup-sizing-default" type="text" id="customerName"
+        v-model="customerName" placeholder="enter your name" />
     </div>
 
     <button class="btn btn-success mx-3" @click="createInvestment">
@@ -96,25 +90,32 @@ div.offer-detail {
     font-weight: 700;
     border-radius: 0;
   }
+
   input {
     border-radius: 0;
   }
+
   hr {
     background-color: #fff;
   }
+
   color: #fff;
   background-color: #747264;
   padding: 20px;
+
   h4 {
     text-align: left;
   }
+
   p {
     text-align: left;
+
     span {
       font-weight: 800;
     }
   }
 }
+
 h2 {
   text-align: left;
   font-weight: 900;
