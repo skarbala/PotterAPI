@@ -33,7 +33,7 @@
     </div>
     <div class="input-group mb-3">
       <input class="form-control" aria-describedby="inputGroup-sizing-default" type="text" id="customerName"
-        v-model="customerName" placeholder="enter your name" />
+        data-test="customer-name" v-model="customerName" placeholder="enter your name" />
     </div>
 
     <button class="btn btn-success mx-3" @click="createInvestment">
