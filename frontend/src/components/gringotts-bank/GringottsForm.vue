@@ -36,10 +36,10 @@
         data-test="customer-name" v-model="customerName" placeholder="enter your name" />
     </div>
 
-    <button class="btn btn-success mx-3" @click="createInvestment">
+    <button class="btn btn-success mx-3" @click="createInvestment" data-test="create-investment">
       Create Investment
     </button>
-    <button class="btn btn-danger mx-3" @click="rejectOffer">
+    <button class="btn btn-danger mx-3" @click="rejectOffer" data-test="decline-investment">
       Reject Offer
     </button>
   </div>
