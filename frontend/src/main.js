@@ -9,7 +9,7 @@ import QuoteGenerator from '../src/components/QuoteGenerator'
 import GringottsBank from '../src/components/GringottsBank'
 
 const axiosconfig = {
-  baseURL: 'https://potterapi-tgq2.onrender.com',
+  baseURL: 'http://localhost:3000/',
   timeout: 30000,
 };
 Vue.prototype.$http = axios.create(axiosconfig)
