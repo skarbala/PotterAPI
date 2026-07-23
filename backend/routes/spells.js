@@ -1,23 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const spells = require('../spells.json');
-const spellController = require('../controllers/spellsController.js')
+const spells = require("../spells.json");
+const spellController = require("../controllers/spellsController.js");
 module.exports = router;
-const authChecker = require('../middleware/header.js')
+const authChecker = require("../middleware/header.js");
 
-router.get('/', spellController.spells_list);
+router.get("/", spellController.spells_list);
 
-router.post('/', authChecker.checkHeader, spellController.new_spell);
+router.post("/", authChecker.checkHeader, spellController.new_spell);
 
-router.get('/:spellId', spellController.specific_spell)
+router.get("/:spellId", spellController.specific_spell);
 
-router.delete('/:spellId', spellController.delete_spell)
+router.delete("/:spellId", spellController.delete_spell);
 
-router.delete('/actions/deleteAll', spellController.delete_all)
+router.delete("/actions/deleteAll", spellController.delete_all);
 
-router.get('/actions/reset', spellController.reset)
+router.get("/actions/reset", spellController.reset);
 
-router.put('/:spellId', authChecker.checkHeader, spellController.update_spell)
-
-
-
+router.put("/:spellId", authChecker.checkHeader, spellController.update_spell);
