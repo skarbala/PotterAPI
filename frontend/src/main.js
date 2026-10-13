@@ -7,6 +7,8 @@ import SortingHat from "../src/components/SortingHat";
 import Welcome from "../src/components/Welcome";
 import QuoteGenerator from "../src/components/QuoteGenerator";
 import GringottsBank from "../src/components/GringottsBank";
+import Login from "../src/components/Login";
+import Houses from "../src/components/Houses";
 
 const axiosconfig = {
   baseURL: "http://localhost:3000/",
@@ -21,6 +23,8 @@ const router = new VueRouter({
     { path: "/sortingHat", component: SortingHat },
     { path: "/quotes", component: QuoteGenerator },
     { path: "/gringottsBank", component: GringottsBank },
+    { path: "/login", component: Login },
+    { path: "/houses", component: Houses },
     { path: "/", component: Welcome },
   ],
 });

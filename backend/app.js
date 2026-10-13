@@ -28,8 +28,12 @@ app.use('/sortingHat', sortingHatRoute);
 const quote = require('./routes/quote.js');
 app.use('/quote', quote);
 
+const investmentsRoute = require('./routes/investments.js');
+app.use('/investments', investmentsRoute);
+
 app.get('/login', basicAuth({
     users: { 'admin': 'supersecret' },
+    challenge: false,
 }), (req, res) => {
     const user = {
         username: 'furboslav',

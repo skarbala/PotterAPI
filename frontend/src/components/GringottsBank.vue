@@ -26,6 +26,7 @@
           <GringottsInvestmentList
             :investments="investments"
             @delete-investment="handleDeleteInvestment"
+            @clear-all-investments="handleClearAllInvestments"
           />
           <div v-if="investments.length === 0" class="no-investments-message">
             <p>No investments yet. Make your first one!</p>
@@ -48,13 +49,7 @@ export default {
     GringottsInvestmentList,
   },
   created: function () {
-    if (localStorage.getItem("investments")) {
-      try {
-        this.investments = JSON.parse(localStorage.getItem("investments"));
-      } catch (e) {
-        localStorage.removeItem("investments");
-      }
-    }
+    this.loadInvestments();
   },
   data() {
     return {
@@ -63,40 +58,59 @@ export default {
     };
   },
   methods: {
+    loadInvestments() {
+      this.$http
+        .get("/investments")
+        .then((response) => {
+          this.investments = response.data;
+        })
+        .catch((error) => {
+          console.error("Failed to load investments:", error);
+          this.investments = [];
+        });
+    },
     handleCalculationDone(newInvestmentData) {
       this.newInvestment = newInvestmentData;
     },
     handleCreateInvestment(customerName) {
       if (this.newInvestment) {
-        // Create a new investment object with customer name
         const investment = {
           ...this.newInvestment,
           customerName,
         };
-        // Log the new investment to the console
-        console.log("New Investment:", investment);
         this.investments.push(investment);
 
-        this.saveAppliedSavings();
-        // Optionally, reset the newInvestment data
+        this.saveInvestments();
         this.newInvestment = null;
-        //this.$refs.calculator.resetInputFields();
       }
     },
     handleRejectOffer() {
       this.newInvestment = null;
-
-      // Handle the rejected offer, e.g., log a message or perform other actions
       console.log("Offer Rejected");
     },
     handleDeleteInvestment(index) {
-      // Handle the deletion of the investment in the parent component
       this.investments.splice(index, 1);
-      this.saveAppliedSavings();
+      this.saveInvestments();
     },
-    saveAppliedSavings() {
-      const parsed = JSON.stringify(this.investments);
-      localStorage.setItem("investments", parsed);
+    handleClearAllInvestments() {
+      this.$http
+        .delete("/investments")
+        .then(() => {
+          this.investments = [];
+        })
+        .catch((error) => {
+          console.error("Failed to clear investments:", error);
+        });
+    },
+    saveInvestments() {
+      this.$http
+        .put("/investments", this.investments)
+        .then((response) => {
+          this.investments = response.data;
+        })
+        .catch((error) => {
+          console.error("Failed to save investments:", error);
+        });
     },
   },
 };

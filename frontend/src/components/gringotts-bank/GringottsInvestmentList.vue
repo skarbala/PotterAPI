@@ -58,6 +58,14 @@
         </div>
       </li>
     </ul>
+    <button
+      v-if="investments.length > 0"
+      class="btn btn-danger btn-block clear-all-btn my-2"
+      data-test="clear-all-investments"
+      @click="clearAllInvestments"
+    >
+      Clear all
+    </button>
     <GringottsInvestmentModal
       v-if="selectedInvestment !== null"
       :investment="selectedInvestment"
@@ -100,6 +108,9 @@ export default {
       // Trigger the deletion of the investment at the specified index
       this.$emit("delete-investment", index);
     },
+    clearAllInvestments() {
+      this.$emit("clear-all-investments");
+    },
     openInvestmentModal(index) {
       this.selectedInvestment = this.investments[index];
       this.isModalOpen = true;
@@ -116,6 +127,12 @@ export default {
 h2 {
   color: #747264;
   text-align: left;
+}
+.clear-all-btn {
+  width: 100%;
+  border-radius: 0;
+  font-weight: 700;
+  padding: 10px;
 }
 ul.investment-list {
   list-style: none;

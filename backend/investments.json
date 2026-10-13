@@ -1,0 +1,17 @@
+[
+  {
+    "oneTimeInvestment": 15000,
+    "fund": {
+      "id": 5,
+      "name": "Marauder's Map Mutuals",
+      "risk": "HIGH",
+      "interestRate": 8
+    },
+    "years": 10,
+    "totalInvestment": 32383.874959091823,
+    "interestIncome": 17383.874959091823,
+    "taxes": 3302.9362422274467,
+    "netIncome": 29080.938716864377,
+    "customerName": "ewfwef"
+  }
+]
